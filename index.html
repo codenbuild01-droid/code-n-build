@@ -1,1196 +1,829 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>codeNbuild — Software & Hardware Projects, Source Code & Mentorship</title>
-    <meta name="description" content="codeNbuild helps engineering students learn by building. We provide complete software projects, hardware DIY kits, source code, and expert mentorship to guide you from start to submission.">
-    <meta name="theme-color" content="#2563eb">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;70;800;900&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            blue: '#2563eb',
-                            orange: '#f97316',
-                            navy: '#1e293b',
-                        },
-                    },
-                    animation: {
-                        gradient: 'gradientBG 15s ease infinite',
-                        'pulse-glow': 'pulse-glow 2.5s infinite alternate',
-                        'fade-in': 'fade-in 0.3s ease-out forwards',
-                        'scale-up': 'scale-up 0.3s ease-out forwards',
-                    },
-                    keyframes: {
-                        gradientBG: {
-                            '0%, 100%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                        },
-                        'pulse-glow': {
-                            'from': { boxShadow: '0 0 20px rgba(37, 99, 235, 0.5), 0 0 30px rgba(249, 115, 22, 0.3)' },
-                            'to': { boxShadow: '0 0 35px rgba(37, 99, 235, 0.8), 0 0 55px rgba(249, 115, 22, 0.5)' },
-                        },
-                        'fade-in': {
-                            'from': { opacity: 0 },
-                            'to': { opacity: 1 },
-                        },
-                        'scale-up': {
-                            'from': { transform: 'scale(0.95) translateY(10px)', opacity: 0 },
-                            'to': { transform: 'scale(1) translateY(0)', opacity: 1 },
-                        }
-                    }
-                },
-            },
-        };
-    </script>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .light {
-             background: #f8fafc;
-        }
-        .dark {
-            background: linear-gradient(-45deg, #000000, #020617, #1e1b4b, #020617);
-            background-size: 400% 400%;
-            animation: gradientBG 25s ease infinite;
-        }
-        .glow-effect {
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4), 0 0 25px rgba(249, 115, 22, 0.3);
-            transition: box-shadow 0.3s ease-in-out;
-        }
-        .glow-effect:hover {
-            box-shadow: 0 0 25px rgba(37, 99, 235, 0.7), 0 0 40px rgba(249, 115, 22, 0.5);
-        }
-        .hero-title-shadow {
-            text-shadow: 2px 2px 12px rgba(0,0,0,0.7);
-        }
-        .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #f97316);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-        }
+  <title>Codenbuild – DIY Engineering Project Kits, Robotics & IoT with Mentorship</title>
 
-        /* --- ENHANCED SCROLL ANIMATIONS --- */
-        .animate-on-scroll {
-            opacity: 0;
-            transition: opacity 0.7s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
-            will-change: opacity, transform;
-        }
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: none; /* Resets to original position */
-        }
-        .animate-on-scroll.animate-fade-up {
-            transform: translateY(30px);
-        }
-        .animate-on-scroll.animate-zoom-in {
-            transform: scale(0.9);
-        }
-        .animate-on-scroll.animate-flip-in {
-            transform: perspective(1000px) rotateX(-50deg);
-            transform-origin: top;
-        }
-        .animate-on-scroll.animate-slide-in-left {
-            transform: translateX(-40px);
-        }
-        .animate-on-scroll.animate-slide-in-right {
-            transform: translateX(40px);
-        }
-        
-        /* --- NEW VISUAL STYLES --- */
+  <!-- SEO -->
+  <meta
+    name="description"
+    content="Codenbuild provides DIY engineering project kits, robotics and IoT projects, Arduino kits and mentorship for school, diploma and engineering students. Build, understand and present your projects with expert guidance."
+  />
+  <meta
+    name="keywords"
+    content="Codenbuild, DIY project kits, engineering projects, robotics projects, IoT projects, Arduino projects, mini projects, major projects, project guidance, mentorship, electronics kits"
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://codenbuild.netlify.app/" />
 
-        /* Section Backgrounds */
-        #home {
-            background-image: linear-gradient(rgba(2, 6, 23, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-        #pricing {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98)), url('https://images.unsplash.com/photo-1555099962-4199c345e541?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-        #about {
-            position: relative;
-            background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            overflow: hidden; /* To contain watermark pseudo-element */
-        }
-        #about::before {
-            content: '🚀';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 15rem;
-            color: rgba(255, 255, 255, 0.03);
-            z-index: 0;
-        }
-        footer {
-            background-image: linear-gradient(rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 1)), url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=2071&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-        .gradient-bg-section {
-            position: relative;
-        }
-        .gradient-bg-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.15), transparent 70%);
-            z-index: 0;
-        }
-        .gradient-bg-section > * {
-            position: relative;
-            z-index: 1;
-        }
+  <!-- Open Graph -->
+  <meta
+    property="og:title"
+    content="Codenbuild – DIY Engineering Project Kits, Robotics & IoT with Mentorship"
+  />
+  <meta
+    property="og:description"
+    content="Order DIY robotics, IoT, Arduino and software project kits with mentorship for school, diploma and engineering students."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://codenbuild.netlify.app/" />
+  <meta property="og:site_name" content="Codenbuild" />
+  <!-- Replace og-image.jpg with your real image file in site root -->
+  <meta property="og:image" content="https://codenbuild.netlify.app/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-        /* Services Section Icons */
-        .service-card {
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .service-card::before {
-            content: var(--icon-content);
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            font-size: 7rem;
-            line-height: 1;
-            color: rgba(37, 99, 235, 0.05);
-            z-index: -1;
-            transition: transform 0.3s ease-in-out;
-        }
-        .service-card:hover::before {
-            transform: scale(1.1) rotate(-5deg);
-        }
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Codenbuild – DIY Engineering Project Kits, Robotics & IoT" />
+  <meta
+    name="twitter:description"
+    content="DIY project kits + mentorship for robotics, IoT, Arduino and software projects."
+  />
+  <meta name="twitter:image" content="https://codenbuild.netlify.app/og-image.jpg" />
 
-        /* Projects Section Background */
-        .project-bg {
-            background-image: linear-gradient(rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.9)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        
-        /* Process Section Timeline */
-        .process-timeline {
-            position: relative;
-        }
-        .process-step {
-            position: relative;
-        }
-        .process-content {
-            position: relative;
-            background-color: rgba(30, 41, 59, 0.5);
-            border: 1px solid #334155;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            transition: border-color 0.3s ease;
-        }
-        .process-icon-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 2px solid #334155;
-            background-color: #1e293b;
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-        .process-step:hover .process-content {
-            border-color: #2563eb;
-        }
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        /* Mobile Layout (< 768px) */
-        @media (max-width: 767px) {
-            .process-timeline {
-                padding-left: 50px;
-            }
-            .process-timeline::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 15px; /* (32px icon width / 2) - 1px line width */
-                width: 2px;
-                background-color: #334155;
-            }
-            .process-step {
-                padding-bottom: 2rem;
-            }
-            .process-step:last-child {
-                padding-bottom: 0;
-            }
-            .process-icon-container {
-                width: 32px;
-                height: 32px;
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-            .process-content {
-                margin-top: 0;
-            }
-            .process-step:hover .process-icon-container {
-                border-color: #2563eb;
-                transform: scale(1.1);
-                box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
-            }
-        }
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+    rel="stylesheet"
+  />
 
-        /* Desktop Layout (>= 768px) */
-        @media (min-width: 768px) {
-            .process-timeline::before {
-                content: '';
-                position: absolute;
-                top: 32px;
-                bottom: 32px;
-                left: 50%;
-                width: 2px;
-                background-color: #334155;
-                transform: translateX(-50%);
-            }
-            .process-step {
-                padding-bottom: 4rem;
-            }
-            .process-step:last-child {
-                padding-bottom: 0;
-            }
-            .process-icon-container {
-                width: 64px;
-                height: 64px;
-                position: absolute;
-                left: 50%;
-                top: 0;
-                transform: translateX(-50%);
-            }
-            .process-step:hover .process-icon-container {
-                border-color: #2563eb;
-                transform: translateX(-50%) scale(1.1);
-                box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
-            }
-            .process-content {
-                width: calc(50% - 4rem);
-                margin-top: 0;
-            }
-            .process-step:nth-child(odd) .process-content {
-                float: left;
-                text-align: right;
-            }
-            .process-step:nth-child(even) .process-content {
-                float: right;
-                text-align: left;
-            }
-            .process-step::after {
-                content: '';
-                display: table;
-                clear: both;
-            }
-            .process-content::before {
-                content: '';
-                position: absolute;
-                top: 22px;
-                width: 0;
-                height: 0;
-                border: 10px solid transparent;
-                transition: border-color 0.3s ease;
-            }
-            .process-step:nth-child(odd) .process-content::before {
-                right: -20px;
-                border-left-color: #334155;
-            }
-            .process-step:nth-child(even) .process-content::before {
-                left: -20px;
-                border-right-color: #334155;
-            }
-            .process-step:nth-child(odd):hover .process-content::before {
-                border-left-color: #2563eb;
-            }
-            .process-step:nth-child(even):hover .process-content::before {
-                border-right-color: #2563eb;
-                border-left-color: transparent;
-            }
-        }
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(-45deg, #020617, #0b1120, #0f172a, #005bff);
+      background-size: 400% 400%;
+      animation: gradientBG 25s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-title-shadow {
+      text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
+    }
+    .glow-effect {
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4),
+                  0 0 25px rgba(34, 197, 94, 0.3);
+      transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    .glow-effect:hover {
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.7),
+                  0 0 40px rgba(34, 197, 94, 0.5);
+      transform: translateY(-2px);
+    }
+    .section-bg {
+      background: radial-gradient(ellipse at top, #020617 0%, #020617 100%);
+    }
+  </style>
 
-        /* Pulsating dot for mentor availability */
-        .pulsating-dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: #22c55e; /* green-500 */
-            border-radius: 50%;
-            animation: pulse-dot 2s infinite;
-            box-shadow: 0 0 0 0 rgba(34, 197, 94, 1);
-        }
-
-        @keyframes pulse-dot {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-            }
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
-            }
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-            }
-        }
-
-        /* Ribbon for pricing card */
-        .pricing-ribbon-wrapper {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 120px;
-            height: 120px;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .pricing-ribbon {
-            position: absolute;
-            top: 30px;
-            right: -30px;
-            transform: rotate(45deg);
-            background-color: #2563eb; /* brand-blue */
-            color: white;
-            padding: 5px 0;
-            width: 150px;
-            text-align: center;
-            font-size: 0.75rem; /* 12px */
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/client": "https://aistudiocdn.com/react-dom@^19.2.0/client",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.22.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  <!-- Schema.org: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Codenbuild",
+    "url": "https://codenbuild.netlify.app/",
+    "logo": "https://codenbuild.netlify.app/og-image.jpg",
+    "sameAs": [
+      "https://www.instagram.com/codenbuild_support",
+      "https://medium.com/@sohamthakarest15"
+    ],
+    "description": "Codenbuild provides DIY engineering project kits, robotics and IoT projects, Arduino kits and mentorship for students."
   }
-}
-</script>
+  </script>
+
+  <!-- Schema.org: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you give ready-made projects or DIY kits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We provide DIY kits with guidance, not ready-made submissions. You build the project yourself with our help, which keeps you safe with college rules and helps you actually understand your work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I don’t know much coding. Can I still do a project?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We recommend beginner-friendly kits and guide you step by step. You’ll get code templates, explanations, and doubt support so you can learn while building."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does rental of components work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You rent components like Arduino, sensors, and driver modules for a fixed period. A refundable security deposit is taken, which is returned when you return all parts safely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will you help with PPT, report and viva questions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Along with the kit, we support you with explanation, basic documentation structure and viva preparation so you can present confidently."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
-    <div id="root"></div>
+<body class="text-white">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-30 bg-slate-950/70 backdrop-blur border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2">
+        <div class="h-9 w-9 rounded-xl bg-sky-500 flex items-center justify-center">
+          <span class="font-black text-xl">CB</span>
+        </div>
+        <span class="font-bold text-lg md:text-xl">Codenbuild</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#about" class="hover:text-sky-300">About</a>
+        <a href="#kits" class="hover:text-sky-300">Kits</a>
+        <a href="#projects" class="hover:text-sky-300">Projects</a>
+        <a href="#pricing" class="hover:text-sky-300">Pricing</a>
+        <a href="#faq" class="hover:text-sky-300">FAQ</a>
+        <a href="#blogs" class="hover:text-sky-300">Blogs</a>
+        <a href="#contact" class="hover:text-sky-300">Contact</a>
+        <a
+          href="https://forms.gle/ksP2BdhMxQs4nPkX8"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-4 bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm glow-effect"
+        >Start Your Project</a>
+      </nav>
+    </div>
+  </header>
 
-    <script type="module">
-        import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
-        import ReactDOM from 'react-dom/client';
-        import { GoogleGenAI } from "@google/genai";
-        
-        // --- BUNDLED APPLICATION CODE ---
+  <main id="top">
+    <!-- HERO -->
+    <section class="section-bg">
+      <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="hero-title-shadow text-3xl md:text-5xl font-black leading-tight">
+            Build Real <span class="gradient-text">Hardware & Software</span>
+            Projects with Codenbuild
+          </h1>
+          <p class="mt-4 text-slate-200 text-sm md:text-base">
+            Codenbuild helps engineering and school students build robotics,
+            IoT, and software projects with ready-to-use DIY kits, rentals, and
+            one-on-one mentor guidance—until your final submission and viva are
+            done.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <!-- Main CTA: gradient button -->
+            <a
+              href="#kits"
+              class="bg-gradient-to-r from-sky-500 to-emerald-400 hover:from-sky-600 hover:to-emerald-500 text-slate-950 font-semibold px-5 py-3 rounded-lg text-sm md:text-base shadow-md glow-effect"
+            >Explore Project Kits</a>
+            <!-- Secondary CTA: outline -->
+            <a
+              href="https://wa.me/7822916318"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="border border-sky-400 text-sky-300 hover:bg-sky-500/10 font-semibold px-5 py-3 rounded-lg text-sm md:text-base"
+            >Chat on WhatsApp</a>
+          </div>
+        </div>
 
-        // --- from constants.ts ---
-        const logoBase64 = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTgwIDQwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0ibG9nb0dyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzNiODJmNiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y5NzMxNiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxzdHlsZT4udGV4dHtmb250LWZhbWlseTpJbnRlcixzYW5zLXNlcmlmO2ZvbnQtc2l6ZToyOHB4O2ZvbnQtd2VpZ2h0OjgwMDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsfTwvc3R5bGU+PHRleHQgeD0iMCIgeT0iMjAiIGNsYXNzPSJ0ZXh0IiBmaWxsPSJ1cmwoI2xvZ29HcmFkaWVudCkiPmNvZGVOYnVpbGQ8L3RleHQ+PC9zdmc+';
-        const navItems = [
-            { href: '#services', label: 'Services' },
-            { href: '#guidance', label: 'Guidance' },
-            { label: 'Projects', isModalTrigger: true },
-            { href: '#process', label: 'Process' },
-            { href: '#community', label: 'Community' },
-            { href: '#blog', label: 'Blog' },
-            { href: '#about', label: 'About' },
-            { href: '#faq', label: 'FAQ' },
-            { href: '#contact', label: 'Contact' },
-        ];
+        <!-- Hero image -->
+        <div class="relative">
+          <div class="rounded-2xl overflow-hidden border border-slate-700 bg-slate-900/70 glow-effect">
+            <img
+              src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Students working on DIY robotics and electronics project kits"
+              class="w-full h-72 md:h-80 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
 
-        const services = [
-            { title: "Software Projects & Source Code", description: "Get full source code, setup guides, and detailed documentation. Focus on learning and customizing, not coding from scratch.", icon: '💻' },
-            { title: "Hardware DIY Kits", description: "Receive all necessary components, circuit diagrams, and assembly guides for your hardware and IoT projects.", icon: '🔌' },
-            { title: "Expert Mentorship", description: "Our experts provide one-on-one guidance for both software and hardware, from code explanations to circuit debugging.", icon: '👨‍🏫' },
-            { title: "Custom Solutions", description: "Have a unique idea? We develop custom software or hardware projects from the ground up, tailored to your requirements.", icon: '✨' },
-        ];
+    <!-- ABOUT -->
+    <section id="about" class="py-16 bg-slate-950/60 border-t border-slate-800">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="max-w-3xl">
+          <h2 class="text-2xl md:text-3xl font-black mb-3">
+            About <span class="gradient-text">Codenbuild</span>
+          </h2>
+          <p class="text-sm md:text-base text-slate-200">
+            Codenbuild is a student-led startup formed by engineering students
+            who wanted to make projects simpler, more practical, and less
+            stressful for others. Instead of just selling ready-made work, we
+            focus on helping you actually learn by building.
+          </p>
+          <p class="mt-3 text-sm md:text-base text-slate-200">
+            We provide ready-to-use kits, rental options, and mentor guidance
+            so that you don't just submit a project—you understand it, present
+            it confidently, and feel proud of what you’ve built.
+          </p>
+        </div>
+      </div>
+    </section>
 
-        const guidanceSteps = [
-            { title: "Synopsis & Abstract Writing", description: "Craft a compelling project proposal that clearly defines your objectives and scope.", icon: React.createElement("svg", { className: "w-8 h-8 text-brand-blue", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" })) },
-            { title: "System Architecture & Design", description: "Learn to design robust software architecture and database schemas for your application.", icon: React.createElement("svg", { className: "w-8 h-8 text-brand-orange", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M13 10V3L4 14h7v7l9-11h-7z" })) },
-            { title: "Coding & Debugging Support", description: "Stuck on a bug or a faulty circuit? We assist with coding, debugging, and optimizing your software and hardware.", icon: React.createElement("svg", { className: "w-8 h-8 text-brand-blue", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" })) },
-            { title: "Final Report & Presentation", description: "Get help structuring your report and preparing for your final presentation and viva voce.", icon: React.createElement("svg", { className: "w-8 h-8 text-brand-orange", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M17 9.172V15c0 1.105.895 2 2 2 1.105 0 2-.895 2-2V9.172a2 2 0 00-1.024-1.732l-5-2.887a2 2 0 00-1.952 0l-5 2.887A2 2 0 003 9.172V15c0 1.105.895 2 2 2s2-.895 2-2V9.172" })) },
-        ];
-        
-        const projects = [
-            { name: "Library Management System", category: "Web", difficulty: "Intermediate", description: "A digital system to manage and track books, member checkouts, and inventory in a library.", technologies: ["React", "Node.js", "MongoDB"], wikiLink: "https://en.wikipedia.org/wiki/Integrated_library_system" },
-            { name: "Online Quiz System", category: "Web", difficulty: "Beginner", description: "A web platform for creating and taking quizzes online with automated scoring and real-time results.", technologies: ["JavaScript", "HTML5", "CSS3", "PHP"], wikiLink: "https://en.wikipedia.org/wiki/E-assessment" },
-            { name: "Student Attendance Management", category: "Web", difficulty: "Intermediate", description: "An application to track and manage student attendance digitally, replacing manual paper-based methods.", technologies: ["Java", "Spring Boot", "MySQL"], wikiLink: "https://en.wikipedia.org/wiki/Attendance_tracking" },
-            { name: "To-Do List App", category: "Utility", difficulty: "Beginner", description: "A simple yet powerful utility to organize daily tasks, set priorities, and track progress effectively.", technologies: ["React", "TailwindCSS", "Local Storage"], wikiLink: "https://en.wikipedia.org/wiki/Time_management#Task_list" },
-            { name: "Weather Forecast App", category: "Utility", difficulty: "Beginner", description: "Fetches and displays real-time weather data and forecasts for any location using a third-party API.", technologies: ["JavaScript", "REST API", "HTML5"], wikiLink: "https://en.wikipedia.org/wiki/Weather_forecasting" },
-            { name: "Expense Tracker", category: "Utility", difficulty: "Beginner", description: "A handy tool to log, categorize, and visualize personal or business expenses to manage budgets.", technologies: ["Python", "Flask", "SQLite"], wikiLink: "https://en.wikipedia.org/wiki/Expense_management" },
-            { name: "Online Voting System", category: "Web", difficulty: "Intermediate", description: "A secure platform for conducting elections online, ensuring transparency and accessibility.", technologies: ["PHP", "MySQL", "JavaScript"], wikiLink: "https://en.wikipedia.org/wiki/Electronic_voting" },
-            { name: "Chat Application", category: "Web", difficulty: "Intermediate", description: "A real-time messaging application allowing users to communicate instantly with each other.", technologies: ["Node.js", "Socket.IO", "React"], wikiLink: "https://en.wikipedia.org/wiki/Instant_messaging" },
-            { name: "Online Food Ordering System", category: "Web", difficulty: "Advanced", description: "A web platform for customers to browse restaurant menus and place food orders online.", technologies: ["Django", "PostgreSQL", "React"], wikiLink: "https://en.wikipedia.org/wiki/Online_food_ordering" },
-            { name: "Hotel Management System", category: "Web", difficulty: "Advanced", description: "A comprehensive system to manage bookings, room inventory, and guest services in a hotel.", technologies: ["Java", "Hibernate", "Spring"], wikiLink: "https://en.wikipedia.org/wiki/Property_management_system" },
-            { name: "Portfolio Website", category: "Web", difficulty: "Beginner", description: "A personal website to showcase your projects, skills, and experience to potential employers.", technologies: ["HTML5", "CSS3", "JavaScript"], wikiLink: "https://en.wikipedia.org/wiki/Online_portfolio" },
-            { name: "E-commerce Website", category: "Web", difficulty: "Advanced", description: "A full-featured online store with product listings, a shopping cart, and a secure checkout process.", technologies: ["React", "Redux", "Node.js", "MongoDB"], wikiLink: "https://en.wikipedia.org/wiki/E-commerce" },
-            { name: "Movie Recommendation System", category: "AI/ML", difficulty: "Intermediate", description: "An AI system that suggests movies to users based on their viewing history and preferences.", technologies: ["Python", "Pandas", "Scikit-learn"], wikiLink: "https://en.wikipedia.org/wiki/Recommender_system" },
-            { name: "AI Chatbot for Customer Support", category: "AI/ML", difficulty: "Intermediate", description: "An automated conversational agent to handle common customer queries and provide 24/7 support.", technologies: ["Python", "Dialogflow", "Flask"], wikiLink: "https://en.wikipedia.org/wiki/Chatbot" },
-            { name: "AI Voice Assistant", category: "AI/ML", difficulty: "Advanced", description: "A voice-controlled assistant that can perform tasks and retrieve information based on verbal commands.", technologies: ["Python", "SpeechRecognition", "pyttsx3"], wikiLink: "https://en.wikipedia.org/wiki/Virtual_assistant" },
-            { name: "Job Portal Website", category: "Web", difficulty: "Advanced", description: "An online platform connecting job seekers with employers, featuring job listings and application tools.", technologies: ["React", "Node.js", "Express", "MongoDB"], wikiLink: "https://en.wikipedia.org/wiki/Job_board" },
-            { name: "AI Resume Builder", category: "AI/ML", difficulty: "Intermediate", description: "Analyzes resumes and provides AI-driven suggestions for improvement and optimization.", technologies: ["Python", "NLTK", "Streamlit"], wikiLink: "https://en.wikipedia.org/wiki/Resume#ATS-compliance" },
-            { name: "Hospital Management System", category: "Web", difficulty: "Advanced", description: "An integrated system to manage patient records, appointments, and billing in a hospital.", technologies: ["C#", ".NET", "SQL Server"], wikiLink: "https://en.wikipedia.org/wiki/Health_information_management" },
-            { name: "Blogging Platform", category: "Web", difficulty: "Intermediate", description: "A content management system for creating, publishing, and managing blog posts and articles.", technologies: ["Node.js", "Express", "EJS", "MongoDB"], wikiLink: "https://en.wikipedia.org/wiki/Blog" },
-            { name: "Social Media Clone", category: "Web", difficulty: "Advanced", description: "A web application that mimics the core functionalities of a popular social media platform.", technologies: ["React", "Firebase", "TailwindCSS"], wikiLink: "https://en.wikipedia.org/wiki/Social_media" },
-            { name: "Inventory Management System", category: "Python", difficulty: "Intermediate", description: "A system to track stock levels, orders, sales, and deliveries for a business.", technologies: ["Python", "Tkinter", "SQLite"], wikiLink: "https://en.wikipedia.org/wiki/Inventory_management_software" },
-            { name: "Web Scraper Tool", category: "Python", difficulty: "Beginner", description: "A script to automatically extract data and information from websites for analysis or use.", technologies: ["Python", "BeautifulSoup", "Requests"], wikiLink: "https://en.wikipedia.org/wiki/Web_scraping" },
-            { name: "Automated File Organizer", category: "Python", difficulty: "Beginner", description: "A utility script that automatically organizes files in a directory based on their type or extension.", technologies: ["Python", "OS Module"], wikiLink: "https://en.wikipedia.org/wiki/File_organizer" },
-            { name: "Home Automation System (IoT)", category: "Hardware", difficulty: "Intermediate", description: "A smart system to control home appliances like lights and fans remotely via a web interface.", technologies: ["Arduino", "ESP8266", "Firebase"], wikiLink: "https://en.wikipedia.org/wiki/Home_automation" },
-            { name: "Smart Dustbin with Arduino", category: "Hardware", difficulty: "Beginner", description: "A smart bin that automatically opens its lid when it detects a hand nearby using sensors.", technologies: ["Arduino", "C++", "Ultrasonic Sensor"], wikiLink: "https://en.wikipedia.org/wiki/Automatic_waste_receptacle" },
-            { name: "Weather Monitoring Station", category: "Hardware", difficulty: "Beginner", description: "An IoT device that collects and displays real-time environmental data like temperature and humidity.", technologies: ["ESP32", "DHT11 Sensor", "Thingspeak"], wikiLink: "https://en.wikipedia.org/wiki/Weather_station" },
-            { name: "Line Follower Robot", category: "Hardware", difficulty: "Beginner", description: "An autonomous robot that detects and follows a line drawn on the floor using IR sensors.", technologies: ["Arduino", "C++", "IR Sensors"], wikiLink: "https://en.wikipedia.org/wiki/Line-following_robot" },
-            { name: "Obstacle Avoiding Robot", category: "Hardware", difficulty: "Beginner", description: "A robot that can automatically navigate around obstacles in its path using ultrasonic sensors.", technologies: ["Arduino", "C++", "Motor Driver"], wikiLink: "https://en.wikipedia.org/wiki/Obstacle_avoidance" },
-        ];
-        
-        const projectFilters = ['All', 'Web', 'AI/ML', 'Python', 'Utility', 'Hardware'];
-        const projectDifficultyFilters = ['All', 'Beginner', 'Intermediate', 'Advanced'];
+    <!-- KITS (with images) -->
+    <section id="kits" class="py-16 bg-slate-950/70 border-t border-slate-800">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-black">
+            Popular <span class="gradient-text">DIY Project Kits</span>
+          </h2>
+          <p class="mt-3 text-sm md:text-base text-slate-300">
+            Choose from beginner-friendly to advanced kits. All include
+            guidance and support.
+          </p>
+        </div>
 
-        const processSteps = [
-            { title: "Choose Your Project", description: "Browse our software projects and select a plan that fits your needs.", icon: '💻' },
-            { title: "Receive Code & Docs", description: "We deliver the complete source code, guides, and documentation to you instantly.", icon: '⚡' },
-            { title: "Develop with Mentor Support", description: "Follow the tutorials and connect with your mentor whenever you need help.", icon: '💡' },
-            { title: "Complete & Present", description: "Finalize your project and present it with the confidence of an expert developer.", icon: '🎓' },
-        ];
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Kit 1 -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
+            <img
+              src="https://picsum.photos/seed/obstaclebot/600/400"
+              alt="DIY obstacle avoiding robot kit for engineering students"
+              class="w-full h-40 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg mb-1">Obstacle Avoiding Robot Kit</h3>
+            <p class="text-sm text-slate-300 flex-grow">
+              Build an autonomous robot using Arduino, motors and ultrasonic
+              sensors. Ideal for diploma & degree mini-projects.
+            </p>
+            <p class="mt-3 text-xs text-slate-400">
+              Level: Beginner–Intermediate • Hardware + Code + Guidance
+            </p>
+          </div>
 
-        const testimonials = [
-            { quote: "The mentorship was a game-changer. I finally understood concepts I struggled with for months and debugged my code in minutes.", name: "Priya S., CSE", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=128&auto=format&fit=crop" },
-            { quote: "Having the complete source code and documentation saved me so much time. I could focus on learning and adding my own features. Highly recommended!", name: "Rohan K., IT", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=128&auto=format&fit=crop" },
-            { quote: "An amazing platform for any software engineering student looking to build real, professional projects and boost their resume.", name: "Anjali M., CSE", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=128&auto=format&fit=crop" },
-        ];
-        
-        const blogPosts = [
-            {
-                title: "Mastering React Hooks: A Deep Dive into useState and useEffect",
-                excerpt: "Unlock the full potential of functional components in React by mastering the two most fundamental hooks: useState and useEffect. This guide breaks it down...",
-                image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop",
-                link: "#",
-            },
-            {
-                title: "Building a REST API with Node.js, Express, and MongoDB",
-                excerpt: "Learn step-by-step how to build a robust and scalable backend for your web applications using the popular MERN stack technologies. Perfect for beginners...",
-                image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop",
-                link: "#",
-            },
-            {
-                title: "Getting Started with Arduino: Your First IoT Project",
-                excerpt: "Dive into the world of hardware and the Internet of Things! This tutorial guides you through setting up your Arduino and building a simple smart light project.",
-                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
-                link: "#",
-            },
-        ];
+          <!-- Kit 2 -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
+            <img
+              src="https://picsum.photos/seed/firebot/600/400"
+              alt="Fire fighting robot project kit with guidance"
+              class="w-full h-40 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg mb-1">Fire Fighting Robot Kit</h3>
+            <p class="text-sm text-slate-300 flex-grow">
+              A robot that detects fire and moves to extinguish it. Great for
+              competitions and college events.
+            </p>
+            <p class="mt-3 text-xs text-slate-400">
+              Level: Intermediate • Sensors + Motors + Control
+            </p>
+          </div>
 
-        const faqData = [
-            { question: "Do you code the entire project for us?", answer: "For our Basic and Guided plans, we provide the complete source code to help you learn. For Custom Projects, we handle the development. Our main goal is to empower you by helping you understand and customize existing code with our guidance." },
-            { question: "What technologies do you use?", answer: "Our projects cover a wide range of modern, in-demand technologies including Python (Django, Flask), JavaScript (React, Node.js), Java, and databases like MySQL and MongoDB. We focus on the tech stacks that will get you hired." },
-            { question: "Can I customize the project?", answer: "Absolutely! We strongly encourage you to customize and add new features to make the project your own. Our mentorship is designed to help you understand the codebase so you can confidently modify and expand it." },
-            { question: "Do you also provide hardware project kits?", answer: "Yes! Our hardware DIY kits come with all the necessary components, like microcontrollers (Arduino, ESP32), sensors, actuators, and connecting wires. We also provide detailed circuit diagrams and assembly instructions to help you build your project from scratch." },
-        ];
+          <!-- Kit 3 -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
+            <img
+              src="https://picsum.photos/seed/irrigation/600/400"
+              alt="IoT smart irrigation DIY project kit"
+              class="w-full h-40 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg mb-1">IoT Smart Irrigation Kit</h3>
+            <p class="text-sm text-slate-300 flex-grow">
+              Monitor soil moisture and control pumps using NodeMCU/ESP. Perfect
+              for agriculture & IoT-based projects.
+            </p>
+            <p class="mt-3 text-xs text-slate-400">
+              Level: Intermediate • IoT + Sensors + Cloud
+            </p>
+          </div>
 
-        // --- from hooks/useScrollAnimation.ts ---
-        const useScrollAnimation = () => {
-          useEffect(() => {
-            const observer = new IntersectionObserver(
-              (entries) => {
-                entries.forEach((entry) => {
-                  if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                  }
-                });
-              },
-              {
-                threshold: 0.1,
-              }
-            );
+          <!-- Kit 4 -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
+            <img
+              src="https://picsum.photos/seed/homeauto/600/400"
+              alt="Smart home automation embedded system project kit"
+              class="w-full h-40 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg mb-1">Smart Home Automation Kit</h3>
+            <p class="text-sm text-slate-300 flex-grow">
+              Control lights and appliances using switches/app. Learn relays,
+              safety and embedded logic.
+            </p>
+            <p class="mt-3 text-xs text-slate-400">
+              Level: Intermediate • Embedded + Power Control
+            </p>
+          </div>
 
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach((el) => observer.observe(el));
+          <!-- Kit 5 -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
+            <img
+              src="https://picsum.photos/seed/arduino/600/400"
+              alt="Arduino beginner kit for first year engineering students"
+              class="w-full h-40 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg mb-1">Arduino Starter Kit</h3>
+            <p class="text-sm text-slate-300 flex-grow">
+              All basic components + example projects to get started with
+              embedded systems and sensors.
+            </p>
+            <p class="mt-3 text-xs text-slate-400">
+              Level: Beginner • Best for first-year students
+            </p>
+          </div>
 
-            return () => {
-              elements.forEach((el) => {
-                if (el) {
-                    observer.unobserve(el);
-                }
-              });
-            };
-          }, []);
-        };
-        
-        // --- from services/geminiService.ts ---
-        class GeminiApiError extends Error {
-            constructor(message, cause) {
-                super(message);
-                this.name = 'GeminiApiError';
-                this.cause = cause;
-            }
-        }
-        
-        const sendMessageToGemini = async (formData) => {
-            try {
-                const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-                const prompt = `You are a friendly and helpful customer support agent for 'codeNbuild', a platform that provides software and hardware projects for students. A user has sent a message through the contact form. Please provide a helpful and encouraging response to them.
+          <!-- Kit 6 -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
+            <img
+              src="https://picsum.photos/seed/customkit/600/400"
+              alt="Custom electronics and IoT project kit for college submissions"
+              class="w-full h-40 object-cover rounded-lg mb-3"
+            />
+            <h3 class="font-bold text-lg mb-1">Custom Project Kit</h3>
+            <p class="text-sm text-slate-300 flex-grow">
+              Have your own idea? We help design and build a custom kit
+              tailored to your requirements and submission date.
+            </p>
+            <p class="mt-3 text-xs text-slate-400">
+              Level: Custom • Mini or Major projects
+            </p>
+          </div>
+        </div>
 
-User Details:
-- Name: ${formData.name}
-- Email: ${formData.email}
+        <div class="text-center mt-8">
+          <!-- Solid blue CTA -->
+          <a
+            href="https://forms.gle/ksP2BdhMxQs4nPkX8"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold px-6 py-3 rounded-lg text-sm md:text-base shadow-md glow-effect"
+          >Fill the Form to Book Your Kit</a>
+        </div>
+      </div>
+    </section>
 
-Message:
-"${formData.message}"
+    <!-- PROJECTS PAGE SECTION -->
+    <section id="projects" class="py-16 bg-slate-950/80 border-t border-slate-800">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-black">
+            All <span class="gradient-text">Project Categories</span>
+          </h2>
+          <p class="mt-3 text-sm md:text-base text-slate-300">
+            Explore different domains you can build with Codenbuild.
+          </p>
+        </div>
 
-Your response should be formatted in simple markdown. Address the user by their name. Keep the response concise and friendly.`;
-                
-                const response = await ai.models.generateContent({
-                    model: 'gemini-2.5-flash',
-                    contents: prompt,
-                });
-                
-                if (!response.text) {
-                     throw new Error("Received an empty response from the AI assistant.");
-                }
-                
-                return response.text;
-            } catch (error) {
-                console.error("Gemini API call failed:", {
-                    message: error instanceof Error ? error.message : String(error),
-                    details: error,
-                });
-                throw new GeminiApiError("Failed to get a response from the AI assistant.", error);
-            }
-        };
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Robotics -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
+            <h3 class="font-bold text-lg mb-2">Robotics & Automation</h3>
+            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+              <li>Obstacle Avoiding Robot</li>
+              <li>Fire Fighting Robot</li>
+              <li>Line Follower Robot</li>
+              <li>Pick & Place Robotic Arm</li>
+            </ul>
+          </div>
 
-        // --- from App.tsx (transpiled to use React.createElement) ---
-        const BackToTopButton = () => {
-            const [isVisible, setIsVisible] = useState(false);
-            const toggleVisibility = () => window.pageYOffset > 300 ? setIsVisible(true) : setIsVisible(false);
-            const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+          <!-- IoT -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
+            <h3 class="font-bold text-lg mb-2">IoT & Smart Systems</h3>
+            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+              <li>Smart Irrigation System</li>
+              <li>Smart Parking with Ultrasonic Sensors</li>
+              <li>Home Automation with App Control</li>
+              <li>IoT Weather Monitoring Station</li>
+            </ul>
+          </div>
 
-            useEffect(() => {
-                window.addEventListener('scroll', toggleVisibility);
-                return () => window.removeEventListener('scroll', toggleVisibility);
-            }, []);
+          <!-- Core Electronics -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
+            <h3 class="font-bold text-lg mb-2">Core Electronics</h3>
+            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+              <li>Sensor Based Security Systems</li>
+              <li>Traffic Light Controller</li>
+              <li>Energy Monitoring Projects</li>
+              <li>Lab-Based Mini Experiments</li>
+            </ul>
+          </div>
 
-            return React.createElement('button', { onClick: scrollToTop, className: `fixed bottom-6 left-6 bg-brand-blue text-white p-3 rounded-full shadow-lg hover:bg-brand-blue/80 transition-all hover:scale-110 duration-300 z-50 ${isVisible ? 'opacity-100' : 'opacity-0'}`, 'aria-label': "Go to top", style: { pointerEvents: isVisible ? 'auto' : 'none' } },
-                React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: "2" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M5 15l7-7 7 7" }))
-            );
-        };
+          <!-- Software -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
+            <h3 class="font-bold text-lg mb-2">Software & Web</h3>
+            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+              <li>College Management System</li>
+              <li>E-commerce Website</li>
+              <li>Real-time Chat App</li>
+              <li>Portfolio Website</li>
+            </ul>
+          </div>
 
-        const Header = ({ theme, toggleTheme, onShowProjects }) => {
-            const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+          <!-- ML / Data -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
+            <h3 class="font-bold text-lg mb-2">AI, ML & Data</h3>
+            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+              <li>Disease Detection (concept prototypes)</li>
+              <li>Prediction Dashboards</li>
+              <li>Data Analysis Mini Projects</li>
+              <li>Recommendation Concept Projects</li>
+            </ul>
+          </div>
 
-            useEffect(() => {
-                document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
-                return () => { document.body.style.overflow = ''; };
-            }, [isMobileMenuOpen]);
+          <!-- Custom -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
+            <h3 class="font-bold text-lg mb-2">Custom College Projects</h3>
+            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+              <li>Mini + Major project planning</li>
+              <li>Idea validation & refinement</li>
+              <li>Documentation & presentation support</li>
+              <li>End-to-end build with guidance</li>
+            </ul>
+          </div>
+        </div>
 
-            const navLinkClasses = "text-gray-400 hover:text-white transition";
-            const mobileNavLinkClasses = "block text-gray-300 hover:text-white transition rounded-md text-xl py-3";
+        <div class="text-center mt-8">
+          <!-- Outline CTA -->
+          <a
+            href="https://wa.me/7822916318"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block border border-sky-400 text-sky-300 hover:bg-sky-500/10 font-semibold px-6 py-3 rounded-lg text-sm md:text-base glow-effect"
+          >Discuss Your Project Idea →</a>
+        </div>
+      </div>
+    </section>
 
-            return React.createElement('header', { className: "bg-slate-950/70 dark:bg-slate-950/70 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800" },
-                React.createElement('div', { className: "container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center" },
-                    React.createElement('a', { href: "#home", className: "flex-shrink-0" },
-                        React.createElement('img', { src: logoBase64, alt: "codeNbuild logo", className: "h-10 w-auto" })
-                    ),
-                    React.createElement('nav', { className: "hidden lg:flex items-center space-x-6 text-sm font-semibold" },
-                        navItems.map(item => item.isModalTrigger ?
-                            React.createElement('button', { key: item.label, onClick: onShowProjects, className: navLinkClasses }, item.label) :
-                            React.createElement('a', { key: item.href, href: item.href, className: navLinkClasses }, item.label)
-                        )
-                    ),
-                    React.createElement('div', { className: "flex items-center gap-2" },
-                        React.createElement('a', { href: "https://forms.gle/ksP2BdhMxQs4nPkX8", target: "_blank", rel: "noopener noreferrer", className: "hidden sm:inline-block bg-brand-orange text-white font-semibold px-5 py-2 rounded-lg hover:bg-brand-orange/90 transition-transform transform hover:scale-105" }, "Book Now"),
-                        React.createElement('button', { onClick: toggleTheme, className: "w-10 h-10 rounded-lg flex items-center justify-center text-gray-400 hover:bg-slate-800 transition" },
-                            theme === 'dark' ? React.createElement('svg', { className: "w-5 h-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" })) : React.createElement('svg', { className: "w-5 h-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" }))
-                        ),
-                        React.createElement('button', { className: "lg:hidden w-10 h-10 rounded-lg flex items-center justify-center text-gray-400 hover:bg-slate-800 transition z-50", onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen) },
-                            React.createElement('svg', { className: "w-6 h-6", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16" }))
-                        )
-                    )
-                ),
-                React.createElement('div', { className: `fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm lg:hidden transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}` },
-                    React.createElement('div', { className: `fixed top-0 right-0 h-full w-full max-w-xs bg-slate-900 p-8 transition-transform duration-300 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}` },
-                        React.createElement('nav', { className: "mt-16 flex flex-col space-y-4" },
-                            navItems.map(item => item.isModalTrigger ?
-                                React.createElement('button', { key: item.label, onClick: () => { onShowProjects(); setIsMobileMenuOpen(false); }, className: `${mobileNavLinkClasses} w-full text-left` }, item.label) :
-                                React.createElement('a', { key: item.href, href: item.href, className: mobileNavLinkClasses, onClick: () => setIsMobileMenuOpen(false) }, item.label)
-                            )
-                        )
-                    )
-                )
-            );
-        };
+    <!-- PRICING OVERVIEW -->
+    <section id="pricing" class="py-16 bg-slate-950/80 border-t border-slate-800">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-black">
+            Simple <span class="gradient-text">Pricing & Options</span>
+          </h2>
+          <p class="mt-3 text-sm md:text-base text-slate-300">
+            Choose what suits you: full kit, rental, or only mentorship.
+          </p>
+        </div>
 
-        const HeroSection = ({ onShowProjects }) => React.createElement('section', { id: "home", className: "relative text-white pt-28 pb-32 overflow-hidden" },
-            React.createElement('div', { className: "container mx-auto px-4 sm:px-6 text-center relative z-20 animate-on-scroll animate-fade-up" },
-                React.createElement('h1', { className: "text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-4 hero-title-shadow" }, "Build Your Success. ", React.createElement('span', { className: "block mt-2" }, "With Our Projects & Mentorship.")),
-                React.createElement('p', { className: "text-lg md:text-xl max-w-3xl mx-auto mb-8 text-slate-300" }, "At codeNbuild, you don’t just get code — you master creation. We provide complete software projects and hardware DIY kits with expert guidance for you to learn by building."),
-                React.createElement('div', { className: "flex flex-col sm:flex-row justify-center items-center gap-4" },
-                    React.createElement('button', { onClick: onShowProjects, className: "w-full sm:w-auto bg-brand-blue text-white font-bold px-8 py-4 rounded-lg text-lg transform hover:scale-105 transition-all duration-300 glow-effect" }, "Browse Projects"),
-                    React.createElement('a', { href: "https://forms.gle/ksP2BdhMxQs4nPkX8", target: "_blank", rel: "noopener noreferrer", className: "w-full sm:w-auto bg-brand-orange text-white font-bold px-8 py-4 rounded-lg text-lg transform hover:scale-105 transition-all duration-300 glow-effect" }, "Book a Plan")
-                )
-            )
-        );
+        <div class="grid gap-6 md:grid-cols-3">
+          <!-- Full Kit -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-6 flex flex-col">
+            <h3 class="font-bold text-lg mb-2">Complete DIY Kit</h3>
+            <p class="text-sm text-slate-300 flex-grow">
+              All components + code + basic documentation + mentor support.
+            </p>
+            <p class="mt-4 text-xl font-bold text-sky-300">From ₹1499</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Depends on project and components.
+            </p>
+          </div>
 
-        const ServicesSection = () => React.createElement('section', { id: "services", className: "py-20 bg-slate-900/70" },
-            React.createElement('div', { className: "container mx-auto px-4 sm:px-6" },
-                React.createElement('div', { className: "text-center mb-16 animate-on-scroll animate-fade-up" },
-                    React.createElement('h2', { className: "text-3xl sm:text-4xl md:text-5xl font-black text-white" }, "Why Build with ", React.createElement('span', { className: "gradient-text" }, "codeNbuild?")),
-                    React.createElement('p', { className: "text-gray-400 max-w-2xl mx-auto mt-4" }, "We provide everything you need to learn by building and successfully complete your academic project.")
-                ),
-                React.createElement('div', { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" },
-                    services.map((service, index) => React.createElement('div', { key: index, className: "service-card bg-slate-900 p-8 rounded-2xl border border-slate-800 hover:border-brand-blue hover:-translate-y-2 transition-all duration-300 animate-on-scroll animate-flip-in flex flex-col", style: { transitionDelay: `${index * 100}ms`, '--icon-content': `'${service.icon}'` } },
-                        React.createElement('h3', { className: "text-xl font-bold text-white mb-2" }, service.title),
-                        React.createElement('p', { className: "text-gray-400 flex-grow" }, service.description)
-                    ))
-                )
-            )
-        );
+          <!-- Rental -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-6 flex flex-col">
+            <h3 class="font-bold text-lg mb-2">Component Rental</h3>
+            <p class="text-sm text-slate-300 flex-grow">
+              Rent Arduino, sensors, modules and more for your own project.
+            </p>
+            <p class="mt-4 text-xl font-bold text-sky-300">From ₹99/week</p>
+            <p class="text-xs text-slate-400 mt-1">
+              Security deposit required. Refunded on safe return.
+            </p>
+          </div>
 
-        const GuidanceSection = () => React.createElement('section', { id: "guidance", className: "py-20" },
-            React.createElement('div', { className: "container mx-auto px-4 sm:px-6" },
-                React.createElement('div', { className: "text-center mb-16 animate-on-scroll animate-fade-up" },
-                    React.createElement('h2', { className: "text-3xl sm:text-4xl md:text-5xl font-black text-white" }, "End-to-End ", React.createElement('span', { className: "gradient-text" }, "Project Guidance")),
-                    React.createElement('p', { className: "text-gray-400 max-w-3xl mx-auto mt-4" }, "We support you at every stage of your project lifecycle, from ideation to final presentation."),
-                    React.createElement('div', { className: "mt-8" },
-                        React.createElement('div', { className: "inline-block bg-green-500/10 border border-green-500/30 text-green-300 rounded-full px-4 py-2 text-sm" },
-                            React.createElement('span', { className: "pulsating-dot mr-2" }),
-                            "Our mentors are online now!"
-                        )
-                    )
-                ),
-                React.createElement('div', { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto" },
-                    guidanceSteps.map((step, index) => React.createElement('div', { key: index, className: "bg-slate-900 p-6 rounded-xl border border-slate-800 text-center flex flex-col items-center animate-on-scroll animate-zoom-in", style: { transitionDelay: `${index * 100}ms` } },
-                        React.createElement('div', { className: `p-3 rounded-full mb-4 ${index % 2 === 0 ? 'bg-blue-900/50' : 'bg-orange-900/50'}` }, step.icon),
-                        React.createElement('h3', { className: "font-bold text-lg text-white" }, step.title),
-                        React.createElement('p', { className: "text-gray-400 mt-2 text-sm" }, step.description)
-                    ))
-                )
-            )
-        );
-        
-        const TechnologyIcon = ({ technology }) => {
-            const iconClass = "w-4 h-4 mr-1.5 inline-block text-gray-400";
-            const title = technology;
-            const lowerTech = technology.toLowerCase();
+          <!-- Mentorship -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-6 flex flex-col">
+            <h3 class="font-bold text-lg mb-2">Mentorship Only</h3>
+            <p class="text-sm text-slate-300 flex-grow">
+              Already have components? Get guidance on circuit, code,
+              debugging, PPT and viva.
+            </p>
+            <p class="mt-4 text-xl font-bold text-sky-300">
+              From ₹500 / project
+            </p>
+            <p class="text-xs text-slate-400 mt-1">
+              Custom quote for major projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            if (['react', 'redux'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "none", stroke: "currentColor", strokeWidth: "1.5" }, React.createElement('circle', { cx: "12", cy: "12", r: "2.5" }), React.createElement('ellipse', { cx: "12", cy: "12", rx: "10", ry: "4" }), React.createElement('ellipse', { cx: "12", cy: "12", rx: "10", ry: "4", transform: "rotate(60 12 12)" }), React.createElement('ellipse', { cx: "12", cy: "12", rx: "10", ry: "4", transform: "rotate(120 12 12)" }));
-            }
-            if (['node.js', 'express'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "currentColor" }, React.createElement('path', { d: "M12.38.72a.5.5 0 00-.76 0L1.63 6.47a.5.5 0 00-.28.44v11.38c0 .2.13.38.32.45l9.93 5.73a.5.5 0 00.5 0l10-5.73a.5.5 0 00.31-.45V6.9a.5.5 0 00-.28-.43L12.38.72zM12 1.8l9.46 5.46-2.5 1.44-6.95-4-2.5-1.44L12 1.8zM2.85 7.4L7.5 10v4.4L2.85 11.6V7.4zm18.3 4.2L16.5 10v4.4l4.65 2.8v-4.2zM8 10.27l4 2.3 4-2.3v4.6l-4 2.3-4-2.3v-4.6z" }));
-            }
-            if (['mongodb', 'mysql', 'postgresql', 'sqlite', 'sql server', 'hibernate', 'firebase'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }, React.createElement('ellipse', { cx: "12", cy: "5", rx: "9", ry: "3" }), React.createElement('path', { d: "M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" }), React.createElement('path', { d: "M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" }));
-            }
-            if (['python', 'flask', 'django', 'pandas', 'scikit-learn', 'beautifulsoup', 'nltk', 'streamlit', 'pyttsx3', 'tkinter'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "currentColor" }, React.createElement('path', { d: "M14.25 12c0 1.52-.63 2.9-1.65 3.85.5.13 1.02.2 1.55.2 2.21 0 4-1.79 4-4s-1.79-4-4-4c-.53 0-1.05.1-1.55.2.1.1.15.2.25.35.25.3.45.65.6 1 .25.6.35 1.25.35 1.95zm-6.5 0c0-1.52.63-2.9 1.65-3.85-.5-.13-1.02-.2-1.55-.2-2.21 0-4 1.79-4 4s1.79 4 4 4c.53 0 1.05-.1 1.55-.2-.1-.1-.15-.2-.25-.35-.25-.3-.45-.65-.6-1-.25-.6-.35-1.25-.35-1.95zm.1-5.05c-.3-.2-.65-.3-1-.35-.6-.1-1.2-.1-1.8-.05-1.15.1-2.2.45-3.1 1.05-.9.6-1.65 1.4-2.25 2.35-.6.95-.9 2.05-.9 3.15s.3 2.2.9 3.15c.6.95 1.35 1.75 2.25 2.35.9.6 1.95.95 3.1 1.05.6.05 1.2 0 1.8-.05.35-.05.7-.15 1-.35v-1.9c-.3.2-.65.3-1 .35-.6.1-1.2.1-1.8.05-1.15-.1-2.2-.45-3.1-1.05-.9-.6-1.65-1.4-2.25-2.35-.6-.95-.9-2.05-.9-3.15s.3-2.2.9-3.15c.6-.95 1.35-1.75 2.25-2.35.9-.6 1.95-.95 3.1-1.05.6-.05 1.2 0 1.8.05.35.05.7.15 1 .35V6.95zm8.15 10.1c.3.2.65.3 1 .35.6.1 1.2.1 1.8.05 1.15-.1 2.2-.45 3.1-1.05.9-.6 1.65-1.4 2.25-2.35.6-.95.9-2.05-.9-3.15s-.3-2.2-.9-3.15c-.6-.95-1.35-1.75-2.25-2.35-.9-.6-1.95-.95-3.1-1.05-.6-.05-1.2 0-1.8.05-.35.05-.7.15-1 .35v1.9c.3-.2.65-.3 1-.35.6-.1 1.2-.1 1.8-.05 1.15.1 2.2.45 3.1 1.05.9.6 1.65 1.4 2.25 2.35.6.95.9 2.05.9 3.15s-.3 2.2-.9 3.15c-.6-.95-1.35-1.75-2.25-2.35-.9-.6-1.95-.95-3.1-1.05-.6-.05-1.2 0-1.8.05-.35.05-.7.15-1 .35v1.9z" }));
-            }
-            if (['javascript', 'socket.io', 'ejs', 'local storage', 'rest api', 'requests'].includes(lowerTech)) {
-                 return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "currentColor" }, React.createElement('path', { d: "M0 0h24v24H0V0z M22 22H2V2h20v20zM11 15.5H9.5v-7H11v7zm3.75-5.5h-1.5V9h3v1h-1.5v5.5H13v-5.5z"}));
-            }
-            if (['html5'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "currentColor" }, React.createElement('path', { d: "M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.234-2.719 12.063.001.234 2.718-12.063-.001zm.586 4.5l-2.672.719.234 2.156 6.813.001.234-2.219-4.547-.656z" }));
-            }
-            if (['css3', 'tailwindcss'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "currentColor" }, React.createElement('path', { d: "M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.234-2.719 12.063.001.234 2.718-12.063-.001zM11.977 17.25l4.563-1.25.234-2.25-9.313.001.234 2.25 4.281 1.25z" }));
-            }
-            if (['java', 'spring boot', 'spring'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }, React.createElement('path', { d: "M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" }), React.createElement('path', { d: "M6 1V4h4" }));
-            }
-            if (['php'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "currentColor" }, React.createElement('ellipse', { cx: "12", cy: "12", rx: "10", ry: "7" }), React.createElement('path', { d: "M6.5 12c0-1.83 1.03-3.4 2.5-4.25m8.5 4.25c0 1.83-1.03 3.4-2.5 4.25" }));
-            }
-            if (['c#', '.net'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "currentColor" }, React.createElement('path', { d: "M13.5 4H12v5.5h1.5V4zm-3 0H9v5.5h1.5V4zM13.5 14.5H12V20h1.5v-5.5zm-3 0H9V20h1.5v-5.5zM4 10.5h16v3H4v-3z" }));
-            }
-            if (['arduino', 'esp8266', 'c++', 'ultrasonic sensor', 'esp32', 'dht11 sensor', 'ir sensors', 'motor driver', 'thingspeak'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }, React.createElement('rect', { x: "2", y: "2", width: "20", height: "20", rx: "2", ry: "2" }), React.createElement('path', { d: "M9 9h6v6H9zM9 1v2M15 1v2M9 21v2M15 21v2M2 9h2M2 15h2M22 9h-2M22 15h-2" }));
-            }
-            if (['ai/ml', 'dialogflow', 'speechrecognition'].includes(lowerTech)) {
-                return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "none", stroke: "currentColor", strokeWidth: "1.5" }, React.createElement('path', { d: "M9.5 13a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z M19.5 13a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z M12 6a2 2 0 100-4 2 2 0 000 4z M12 22a2 2 0 100-4 2 2 0 000 4z M4.73 18.5a2 2 0 100-4 2 2 0 000 4z M19.27 18.5a2 2 0 100-4 2 2 0 000 4z" }), React.createElement('path', { d: "M4.17 10.5a2 2 0 100-4 2 2 0 000 4z M19.83 10.5a2 2 0 100-4 2 2 0 000 4z" }));
-            }
+    <!-- FAQ -->
+    <section id="faq" class="py-16 bg-slate-950/85 border-t border-slate-800">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl md:text-3xl font-black">
+            Frequently <span class="gradient-text">Asked Questions</span>
+          </h2>
+          <p class="mt-3 text-sm md:text-base text-slate-300">
+            Quick answers to common doubts students have.
+          </p>
+        </div>
 
-            return React.createElement('svg', { title: title, viewBox: "0 0 24 24", className: iconClass, fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }, React.createElement('polyline', { points: "16 18 22 12 16 6" }), React.createElement('polyline', { points: "8 6 2 12 8 18" }));
-        };
+        <div class="space-y-4">
+          <details class="bg-slate-900/80 border border-slate-700 rounded-lg p-4">
+            <summary class="cursor-pointer font-semibold text-sm md:text-base">
+              Do you give ready-made projects or DIY kits?
+            </summary>
+            <p class="mt-2 text-sm text-slate-300">
+              We provide DIY kits with guidance, not ready-made submissions. You will
+              build the project yourself with our help, which keeps you safe with
+              college rules and helps you actually understand your work.
+            </p>
+          </details>
 
-        const ProjectModal = ({ project, onClose }) => {
-            useEffect(() => {
-                const handleKeyDown = (e) => {
-                    if (e.key === 'Escape') {
-                        onClose();
-                    }
-                };
-                document.addEventListener('keydown', handleKeyDown);
-                document.body.style.overflow = 'hidden';
-                return () => {
-                    document.removeEventListener('keydown', handleKeyDown);
-                    document.body.style.overflow = 'auto';
-                };
-            }, [onClose]);
+          <details class="bg-slate-900/80 border border-slate-700 rounded-lg p-4">
+            <summary class="cursor-pointer font-semibold text-sm md:text-base">
+              I don’t know much coding. Can I still do a project?
+            </summary>
+            <p class="mt-2 text-sm text-slate-300">
+              Yes. We recommend beginner-friendly kits and guide you step by step.
+              You’ll get code templates, explanations, and doubt support so you can
+              learn while building.
+            </p>
+          </details>
 
-            const categoryColorMap = { Web: 'bg-blue-500/20 text-blue-300', 'AI/ML': 'bg-purple-500/20 text-purple-300', Python: 'bg-green-500/20 text-green-300', Utility: 'bg-yellow-500/20 text-yellow-300', Hardware: 'bg-orange-500/20 text-orange-300' };
-            const difficultyColorMap = { Beginner: 'bg-green-500/20 text-green-300', Intermediate: 'bg-yellow-500/20 text-yellow-300', Advanced: 'bg-red-500/20 text-red-300' };
-            const ExternalLinkIcon = () => React.createElement('svg', { className: "w-4 h-4 ml-2", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" }));
+          <details class="bg-slate-900/80 border border-slate-700 rounded-lg p-4">
+            <summary class="cursor-pointer font-semibold text-sm md:text-base">
+              How does rental of components work?
+            </summary>
+            <p class="mt-2 text-sm text-slate-300">
+              You rent components like Arduino, sensors, and driver modules for a
+              fixed period. A refundable security deposit is taken, which is returned
+              when you return all parts safely.
+            </p>
+          </details>
 
-            return React.createElement('div', {
-                className: "fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4 animate-fade-in",
-                onClick: onClose,
-                role: "dialog",
-                "aria-modal": "true",
-                "aria-labelledby": "project-modal-title"
-            }, React.createElement('div', {
-                className: "bg-slate-900 rounded-2xl border border-slate-700 max-w-2xl w-full p-6 sm:p-8 relative animate-scale-up shadow-2xl shadow-brand-blue/10",
-                onClick: e => e.stopPropagation()
-            },
-                React.createElement('button', { onClick: onClose, className: "absolute top-4 right-4 text-gray-500 hover:text-white transition-colors rounded-full p-2 hover:bg-slate-800", "aria-label": "Close modal" },
-                    React.createElement('svg', { className: "w-6 h-6", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M6 18L18 6M6 6l12 12" }))
-                ),
-                React.createElement('div', { className: "flex justify-between items-start mb-4 pr-8 gap-4" },
-                    React.createElement('h2', { id: "project-modal-title", className: "text-2xl sm:text-3xl font-bold text-white flex-grow" }, project.name),
-                    React.createElement('div', { className: "flex flex-col items-end gap-2 flex-shrink-0" },
-                        React.createElement('span', { className: `text-xs font-semibold px-2.5 py-1 rounded-full h-fit ${categoryColorMap[project.category] || 'bg-gray-500/20 text-gray-300'}` }, project.category),
-                        React.createElement('span', { className: `text-xs font-semibold px-2.5 py-1 rounded-full h-fit ${difficultyColorMap[project.difficulty] || 'bg-gray-500/20 text-gray-300'}` }, project.difficulty)
-                    )
-                ),
-                React.createElement('p', { className: "text-gray-400 mb-6" }, project.description),
-                React.createElement('div', { className: "mb-6" },
-                    React.createElement('h4', { className: "text-sm font-semibold text-gray-300 mb-3" }, "Technologies Used"),
-                    React.createElement('div', { className: "flex flex-wrap gap-2" },
-                        project.technologies.map(tech => React.createElement('span', { key: tech, className: "flex items-center text-xs bg-brand-blue/20 text-blue-300 px-2.5 py-1.5 rounded-full font-medium" }, 
-                            React.createElement(TechnologyIcon, { technology: tech }),
-                            tech
-                        ))
-                    )
-                ),
-                React.createElement('div', { className: "flex flex-col sm:flex-row gap-4 mt-8 pt-6 border-t border-slate-800" },
-                    React.createElement('a', { href: project.wikiLink, target: "_blank", rel: "noopener noreferrer", className: "flex-1 text-center font-semibold py-3 px-6 rounded-lg bg-slate-800 text-gray-300 hover:bg-slate-700 transition-colors flex items-center justify-center" },
-                        "Learn More",
-                        React.createElement(ExternalLinkIcon)
-                    ),
-                    React.createElement('a', { href: "https://forms.gle/ksP2BdhMxQs4nPkX8", target: "_blank", rel: "noopener noreferrer", className: "flex-1 text-center font-bold py-3 px-6 rounded-lg transition-colors duration-300 bg-brand-orange text-white hover:bg-brand-orange/90" },
-                        "Book This Project"
-                    )
-                )
-            ));
-        };
+          <details class="bg-slate-900/80 border border-slate-700 rounded-lg p-4">
+            <summary class="cursor-pointer font-semibold text-sm md:text-base">
+              Will you help with PPT, report and viva questions?
+            </summary>
+            <p class="mt-2 text-sm text-slate-300">
+              Yes. Along with the kit, we support you with explanation, basic
+              documentation structure and viva preparation so you can present
+              confidently.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
 
-        const ProjectsViewModal = ({ onClose }) => {
-            const [searchTerm, setSearchTerm] = useState('');
-            const [activeCategoryFilter, setActiveCategoryFilter] = useState('All');
-            const [activeDifficultyFilter, setActiveDifficultyFilter] = useState('All');
-            const [selectedProject, setSelectedProject] = useState(null);
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-16 bg-slate-950/90 border-t border-slate-800">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-black">
+            What <span class="gradient-text">Students Say</span>
+          </h2>
+          <p class="mt-3 text-sm md:text-base text-slate-300">
+            Feedback from learners who built their projects with Codenbuild.
+          </p>
+        </div>
 
-            useEffect(() => {
-                const handleKeyDown = (e) => {
-                    if (e.key === 'Escape') {
-                        onClose();
-                    }
-                };
-                document.addEventListener('keydown', handleKeyDown);
-                document.body.style.overflow = 'hidden';
-                return () => {
-                    document.removeEventListener('keydown', handleKeyDown);
-                    document.body.style.overflow = 'auto';
-                };
-            }, [onClose]);
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
+            <p class="text-sm text-slate-200 italic">
+              "The kit quality was great and the guidance helped me understand every
+              part of the project. I was confident during my viva."
+            </p>
+            <p class="mt-4 text-xs text-slate-400">
+              – Computer Science Student
+            </p>
+          </div>
 
-            const filteredProjects = useMemo(() => {
-                return projects.filter(project => {
-                    const matchesCategory = activeCategoryFilter === 'All' || project.category === activeCategoryFilter;
-                    const matchesDifficulty = activeDifficultyFilter === 'All' || project.difficulty === activeDifficultyFilter;
-                    const matchesSearch = project.name.toLowerCase().includes(searchTerm.toLowerCase());
-                    return matchesCategory && matchesDifficulty && matchesSearch;
-                });
-            }, [searchTerm, activeCategoryFilter, activeDifficultyFilter]);
-            
-            const categoryColorMap = { Web: 'bg-blue-500/20 text-blue-300', 'AI/ML': 'bg-purple-500/20 text-purple-300', Python: 'bg-green-500/20 text-green-300', Utility: 'bg-yellow-500/20 text-yellow-300', Hardware: 'bg-orange-500/20 text-orange-300' };
-            const difficultyColorMap = { Beginner: 'border-green-500/50 text-green-300', Intermediate: 'border-yellow-500/50 text-yellow-300', Advanced: 'border-red-500/50 text-red-300' };
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
+            <p class="text-sm text-slate-200 italic">
+              "Renting components saved me a lot of money. I didn’t have to buy
+              everything for a one-time project and still completed on time."
+            </p>
+            <p class="mt-4 text-xs text-slate-400">
+              – Electronics Engineering Student
+            </p>
+          </div>
 
-            return React.createElement(React.Fragment, null, 
-                React.createElement('div', {
-                    className: "fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4 animate-fade-in",
-                    onClick: onClose,
-                    role: "dialog",
-                    "aria-modal": "true",
-                    "aria-labelledby": "projects-modal-title"
-                },
-                React.createElement('div', {
-                    className: "bg-slate-900 rounded-2xl border border-slate-700 w-full max-w-7xl h-[90vh] relative animate-scale-up shadow-2xl shadow-brand-blue/10 flex flex-col",
-                    onClick: e => e.stopPropagation()
-                },
-                    React.createElement('button', { onClick: onClose, className: "absolute top-4 right-4 text-gray-500 hover:text-white transition-colors rounded-full p-2 hover:bg-slate-800 z-20", "aria-label": "Close projects view" },
-                        React.createElement('svg', { className: "w-6 h-6", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M6 18L18 6M6 6l12 12" }))
-                    ),
-                    React.createElement('div', { className: "flex flex-col h-full overflow-hidden" },
-                        React.createElement('div', { className: "text-center pt-8 pb-4 px-4 sm:px-6 flex-shrink-0" },
-                            React.createElement('h2', { id: "projects-modal-title", className: "text-3xl sm:text-4xl md:text-5xl font-black text-white" }, "Software & Hardware Projects"),
-                            React.createElement('p', { className: "text-gray-400 max-w-3xl mx-auto mt-4" }, "Explore our collection of projects. Choose one to develop with our source code and guidance.")
-                        ),
-                        React.createElement('div', { className: "px-4 sm:px-8 pb-8 flex flex-col flex-grow overflow-hidden" },
-                            React.createElement('div', { className: "mb-6 flex-shrink-0" },
-                                React.createElement('input', {
-                                    type: "text",
-                                    placeholder: "Search for a project (e.g., 'E-commerce')",
-                                    value: searchTerm,
-                                    onChange: (e) => setSearchTerm(e.target.value),
-                                    className: "w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue transition",
-                                    'aria-label': "Search projects"
-                                })
-                            ),
-                            React.createElement('div', { className: "flex flex-col sm:flex-row justify-center gap-x-6 gap-y-4 mb-8 flex-shrink-0" },
-                                React.createElement('div', { className: "flex flex-wrap gap-3 justify-center" },
-                                    projectFilters.map(filter => React.createElement('button', {
-                                        key: filter,
-                                        onClick: () => setActiveCategoryFilter(filter),
-                                        className: `px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-300 ${activeCategoryFilter === filter ? 'bg-brand-blue text-white' : 'bg-slate-800 text-gray-400 hover:bg-slate-700'}`
-                                    }, filter))
-                                ),
-                                React.createElement('div', { className: "flex flex-wrap gap-3 justify-center" },
-                                     projectDifficultyFilters.map(filter => React.createElement('button', {
-                                        key: filter,
-                                        onClick: () => setActiveDifficultyFilter(filter),
-                                        className: `px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-300 ${activeDifficultyFilter === filter ? 'bg-brand-orange text-white' : 'bg-slate-800 text-gray-400 hover:bg-slate-700'}`
-                                    }, filter))
-                                )
-                            ),
-                            React.createElement('div', { className: "overflow-y-auto flex-grow project-bg bg-slate-900/50 p-6 rounded-lg border border-slate-800" },
-                                filteredProjects.length > 0 ?
-                                React.createElement('div', { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" },
-                                    filteredProjects.map((p, i) => React.createElement('div', { 
-                                        key: i,
-                                        onClick: () => setSelectedProject(p),
-                                        className: "cursor-pointer group bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-brand-blue hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-blue/20 transition-all duration-300 flex flex-col",
-                                        role: "button",
-                                        tabIndex: 0,
-                                        onKeyDown: (e) => (e.key === 'Enter' || e.key === ' ') && setSelectedProject(p)
-                                    },
-                                        React.createElement('div', { className: "flex justify-between items-start mb-2" },
-                                            React.createElement('h3', { className: "text-lg font-bold text-white flex-grow mr-2" }, p.name),
-                                            React.createElement('span', { className: `text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ${categoryColorMap[p.category] || 'bg-gray-500/20 text-gray-300'}` }, p.category)
-                                        ),
-                                        React.createElement('div', { className: "mb-4" },
-                                            React.createElement('span', { className: `text-xs font-semibold px-2.5 py-1 rounded-full border ${difficultyColorMap[p.difficulty] || 'border-gray-500/50 text-gray-300'}` }, p.difficulty)
-                                        ),
-                                        React.createElement('p', { className: "text-sm text-gray-400 mb-4 flex-grow" }, p.description),
-                                        React.createElement('div', { className: "mt-auto pt-4 border-t border-slate-700/50" },
-                                            React.createElement('div', { className: "flex flex-wrap gap-2" },
-                                                p.technologies.slice(0,3).map(tech => React.createElement('span', { key: tech, className: "flex items-center text-xs bg-brand-blue/20 text-blue-300 px-2 py-1 rounded-full font-medium" },
-                                                    React.createElement(TechnologyIcon, { technology: tech }),
-                                                    tech
-                                                )),
-                                                p.technologies.length > 3 && React.createElement('span', { className: "text-xs bg-slate-700 text-slate-300 px-2 py-1 rounded-full font-medium" }, `+${p.technologies.length - 3} more`)
-                                            )
-                                        )
-                                    ))
-                                ) :
-                                React.createElement('div', { className: "text-center text-gray-500 py-16 flex items-center justify-center h-full" },
-                                     React.createElement('div', null,
-                                        React.createElement('p', { className: "text-lg font-semibold mb-2" }, "No Projects Found"),
-                                        React.createElement('p', null, "Try adjusting your search term or selecting a different category.")
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-                ),
-                selectedProject && React.createElement(ProjectModal, { project: selectedProject, onClose: () => setSelectedProject(null) })
-            );
-        };
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
+            <p class="text-sm text-slate-200 italic">
+              "Codenbuild helped us plan a proper major project. The support from
+              planning to final submission was very helpful."
+            </p>
+            <p class="mt-4 text-xs text-slate-400">
+              – Final Year Project Team
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        const ProcessSection = () => React.createElement('section', { id: "process", className: "py-20" },
-            React.createElement('div', { className: "container mx-auto px-4 sm:px-6" },
-                React.createElement('div', { className: "text-center mb-16 animate-on-scroll animate-fade-up" },
-                    React.createElement('h2', { className: "text-3xl sm:text-4xl md:text-5xl font-black text-white" }, "Our ", React.createElement('span', { className: "gradient-text" }, "4-Step Process")),
-                    React.createElement('p', { className: "text-gray-400 max-w-2xl mx-auto mt-4" }, "A streamlined journey from idea to a successful submission.")
-                ),
-                React.createElement('div', { className: "process-timeline max-w-5xl mx-auto" },
-                    processSteps.map((step, index) => React.createElement('div', { key: index, className: `process-step animate-on-scroll ${index % 2 === 0 ? 'animate-slide-in-right' : 'animate-slide-in-left'}`, style: { transitionDelay: `${index * 150}ms` } },
-                        React.createElement('div', { className: "process-icon-container" }, React.createElement('span', { className: "text-base md:text-3xl" }, step.icon)),
-                        React.createElement('div', { className: "process-content" },
-                            React.createElement('h3', { className: `text-xl font-bold mb-2 ${index % 2 === 0 ? 'text-brand-blue' : 'text-brand-orange'}` }, `${index + 1}. ${step.title}`),
-                            React.createElement('p', { className: "text-gray-400" }, step.description)
-                        )
-                    ))
-                )
-            )
-        );
-        
-        const TestimonialsSection = () => {
-            const [currentIndex, setCurrentIndex] = useState(0);
-            const nextSlide = useCallback(() => { setCurrentIndex(prev => (prev + 1) % testimonials.length); }, []);
-            const prevSlide = useCallback(() => { setCurrentIndex(prev => (prev - 1 + testimonials.length) % testimonials.length); }, []);
+    <!-- BLOGS -->
+    <section id="blogs" class="py-16 bg-slate-950/85 border-t border-slate-800">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-black">
+            Blogs &amp; <span class="gradient-text">Stories</span>
+          </h2>
+          <p class="mt-3 text-sm md:text-base text-slate-300">
+            Learn more about the story, vision and digital innovation behind Codenbuild.
+          </p>
+        </div>
 
-            useEffect(() => {
-                const interval = setInterval(nextSlide, 5000);
-                return () => clearInterval(interval);
-            }, [nextSlide]);
+        <div class="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
+          <!-- Blog 1 -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-6 flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-lg mb-1">
+                The Journey of Codenbuild — A Vision for Students
+              </h3>
+              <p class="text-sm text-slate-300">
+                How Codenbuild started as a student idea and grew into a project-driven
+                startup that empowers learners through hands-on building.
+              </p>
+            </div>
+            <div class="mt-4">
+              <a
+                href="https://medium.com/@sohamthakarest15/the-journey-of-codenbuild-a-vision-by-founders-soham-thakre-and-ishwari-dambhe-09a3d19d889c"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm glow-effect"
+              >Read Blog</a>
+            </div>
+          </div>
 
-            return React.createElement('section', { id: "community", className: "py-20" },
-                React.createElement('div', { className: "container mx-auto px-4 sm:px-6" },
-                    React.createElement('div', { className: "text-center mb-16 animate-on-scroll animate-fade-up" },
-                        React.createElement('h2', { className: "text-3xl sm:text-4xl md:text-5xl font-black text-white" }, "From Our ", React.createElement('span', { className: "gradient-text" }, "Community")),
-                        React.createElement('p', { className: "text-gray-400 max-w-2xl mx-auto mt-4" }, "See what students are saying about their experience with codeNbuild.")
-                    ),
-                    React.createElement('div', { className: "relative max-w-3xl mx-auto animate-on-scroll animate-zoom-in" },
-                        React.createElement('div', { className: "overflow-hidden relative h-64" },
-                            testimonials.map((testimonial, index) => React.createElement('div', { key: index, className: `transition-opacity duration-700 ease-in-out absolute inset-0 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}` },
-                                React.createElement('div', { className: "bg-slate-900 p-8 rounded-xl border border-slate-800 text-center h-full flex flex-col justify-center" },
-                                    React.createElement('img', { src: testimonial.avatar, alt: testimonial.name, className: "w-16 h-16 rounded-full mx-auto mb-4 border-2 border-slate-700" }),
-                                    React.createElement('p', { className: "text-gray-400 mb-6 italic" }, `"${testimonial.quote}"`),
-                                    React.createElement('p', { className: "font-bold mt-4 text-white" }, `— ${testimonial.name}`)
-                                )
-                            ))
-                        ),
-                        React.createElement('button', { onClick: prevSlide, 'aria-label': "Previous testimonial", className: "absolute top-1/2 -left-2 md:-left-12 transform -translate-y-1/2 bg-slate-800/50 hover:bg-slate-700/70 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-110" }, React.createElement('svg', { className: "w-6 h-6", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M15 19l-7-7 7-7" }))),
-                        React.createElement('button', { onClick: nextSlide, 'aria-label': "Next testimonial", className: "absolute top-1/2 -right-2 md:-right-12 transform -translate-y-1/2 bg-slate-800/50 hover:bg-slate-700/70 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-110" }, React.createElement('svg', { className: "w-6 h-6", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M9 5l7 7-7 7" })))
-                    )
-                )
-            );
-        };
-        
-        const BlogSection = () => React.createElement('section', { id: "blog", className: "py-20 bg-slate-900/70" },
-            React.createElement('div', { className: "container mx-auto px-4 sm:px-6" },
-                React.createElement('div', { className: "text-center mb-16 animate-on-scroll animate-fade-up" },
-                    React.createElement('h2', { className: "text-3xl sm:text-4xl md:text-5xl font-black text-white" }, "From the ", React.createElement('span', { className: "gradient-text" }, "Blog")),
-                    React.createElement('p', { className: "text-gray-400 max-w-2xl mx-auto mt-4" }, "Insights, tutorials, and news from the codeNbuild team.")
-                ),
-                React.createElement('div', { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto" },
-                    blogPosts.map((post, index) => React.createElement('div', { 
-                        key: index, 
-                        className: "bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col group animate-on-scroll animate-zoom-in hover:-translate-y-2 transition-all duration-300",
-                        style: { transitionDelay: `${index * 100}ms` }
-                    },
-                        React.createElement('div', { className: "overflow-hidden" },
-                            React.createElement('img', { src: post.image, alt: post.title, className: "w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" })
-                        ),
-                        React.createElement('div', { className: "p-6 flex flex-col flex-grow" },
-                            React.createElement('h3', { className: "text-xl font-bold text-white mb-3 flex-grow" }, post.title),
-                            React.createElement('p', { className: "text-gray-400 text-sm mb-6" }, post.excerpt),
-                            React.createElement('a', { href: post.link, className: "mt-auto inline-block text-brand-blue font-semibold hover:text-brand-orange transition-colors" }, "Read More →")
-                        )
-                    ))
-                )
-            )
-        );
+          <!-- Blog 2 -->
+          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-6 flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-lg mb-1">
+                Codenbuild: Building the Future of Digital Innovation
+              </h3>
+              <p class="text-sm text-slate-300">
+                How Codenbuild is shaping future engineers by combining software,
+                hardware and real mentorship to build industry-ready skills.
+              </p>
+            </div>
+            <div class="mt-4">
+              <a
+                href="https://medium.com/@sohamthakarest15/codenbuild-building-the-future-of-digital-innovation-c52cf0d99056"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm glow-effect"
+              >Read Blog</a>
+            </div>
+          </div>
+        </div>
 
-        const AboutSection = () => React.createElement('section', { id: "about", className: "py-20 bg-slate-900/70" },
-            React.createElement('div', { className: "container mx-auto px-4 sm:px-6 max-w-4xl relative z-10" },
-                React.createElement('div', { className: "text-center mb-16 animate-on-scroll animate-fade-up" },
-                    React.createElement('h2', { className: "text-3xl sm:text-4xl md:text-5xl font-black text-white" }, "About ", React.createElement('span', { className: "gradient-text" }, "Us")),
-                    React.createElement('p', { className: "text-gray-400 max-w-2xl mx-auto mt-4" }, "By Students, For Students.")
-                ),
-                React.createElement('div', { className: "animate-on-scroll animate-fade-up text-center max-w-3xl mx-auto" },
-                    React.createElement('p', { className: "text-gray-300 text-lg" }, "codeNbuild is a student-led startup helping engineering students learn by building. We provide complete software projects, hardware DIY kits, source code, and one-on-one mentor guidance to help you successfully complete your academic projects.")
-                )
-            )
-        );
+        <!-- View All Blogs -->
+        <div class="text-center mt-10">
+          <a
+            href="https://medium.com/@sohamthakarest15"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block border border-sky-400 text-sky-300 hover:bg-sky-500/10 font-semibold px-6 py-3 rounded-lg text-sm glow-effect"
+          >View All Blogs →</a>
+        </div>
+      </div>
+    </section>
 
-        const FAQSection = () => {
-            const [openIndex, setOpenIndex] = useState(null);
-            return React.createElement('section', { id: "faq", className: "py-20" },
-                React.createElement('div', { className: "container mx-auto px-4 sm:px-6 max-w-3xl" },
-                    React.createElement('div', { className: "text-center mb-16 animate-on-scroll animate-fade-up" }, React.createElement('h2', { className: "text-3xl sm:text-4xl md:text-5xl font-black text-white" }, "Common ", React.createElement('span', { className: "gradient-text" }, "Questions"))),
-                    React.createElement('div', { className: "space-y-4" },
-                        faqData.map((faq, index) => React.createElement('div', { key: index, className: "bg-slate-900 border border-slate-800 rounded-lg animate-on-scroll animate-fade-up", style: { transitionDelay: `${index * 100}ms` } },
-                            React.createElement('button', { onClick: () => setOpenIndex(openIndex === index ? null : index), className: "w-full flex justify-between items-center text-left p-6 hover:bg-slate-800/50" },
-                                React.createElement('span', { className: "text-lg font-semibold text-white" }, faq.question),
-                                React.createElement('svg', { className: `h-5 w-5 text-gray-400 transform transition-transform ${openIndex === index ? 'rotate-180' : ''}`, xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M19 9l-7 7-7-7" }))
-                            ),
-                            React.createElement('div', { className: "faq-answer px-6 text-gray-400", style: { maxHeight: openIndex === index ? '500px' : '0' } }, React.createElement('p', { className: "pb-6" }, faq.answer))
-                        ))
-                    )
-                )
-            );
-        };
+    <!-- CONTACT -->
+    <section id="contact" class="py-16 bg-slate-950/90 border-t border-slate-800">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-black mb-3">
+          Ready to <span class="gradient-text">Start Your Project?</span>
+        </h2>
+        <p class="text-sm md:text-base text-slate-300 mb-6">
+          Don’t wait until the last week before submission. Reach out now and
+          we’ll help you plan, build, and present your project with confidence.
+        </p>
 
-        const ContactSection = () => {
-            const [formData, setFormData] = React.useState({ name: '', email: '', message: '' });
-            const [isSubmitting, setIsSubmitting] = React.useState(false);
-            const [isSubmitted, setIsSubmitted] = React.useState(false);
-            const [geminiResponse, setGeminiResponse] = React.useState('');
+        <div class="flex flex-wrap justify-center gap-4">
+          <!-- Gradient CTA -->
+          <a
+            href="https://forms.gle/ksP2BdhMxQs4nPkX8"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-gradient-to-r from-sky-500 to-emerald-400 hover:from-sky-600 hover:to-emerald-500 text-slate-950 font-semibold px-6 py-3 rounded-lg text-sm md:text-base glow-effect"
+          >Fill Booking Form</a>
+          <!-- Green CTA -->
+          <a
+            href="https://wa.me/7822916318"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg text-sm md:text-base flex items-center gap-2"
+          >
+            <span>Chat on WhatsApp</span>
+          </a>
+          <!-- Pink CTA -->
+          <a
+            href="https://www.instagram.com/codenbuild_support"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-3 rounded-lg text-sm md:text-base"
+          >Follow on Instagram</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-            const handleChange = (e) => {
-                const { name, value } = e.target;
-                setFormData(prev => ({ ...prev, [name]: value }));
-            };
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+        <div class="md:w-1/3">
+          <h3 class="font-bold text-lg mb-2">Codenbuild</h3>
+          <p class="text-sm text-slate-300">
+            Student-led startup helping you build DIY robotics, IoT, Arduino and software
+            projects with real understanding—not just submissions. Ideal for school,
+            diploma and engineering mini / major projects.
+          </p>
+        </div>
 
-            const handleSubmit = async (e) => {
-                e.preventDefault();
-                setIsSubmitting(true);
-                setGeminiResponse('');
+        <div class="md:w-2/3 text-sm text-slate-300 space-y-4">
+          <div>
+            <h4 class="font-semibold text-sky-400 mb-1">Privacy Policy</h4>
+            <p>
+              At CodenBuild, we respect your privacy. We only collect personal
+              information (name, email, phone) to process orders and deliver DIY
+              kits. Payment details are handled securely via trusted payment
+              gateways. We do not share your information with third parties
+              except for delivery purposes or as required by law. You can
+              request deletion or correction of your data anytime. Minimal
+              cookies are used for website functionality only.
+            </p>
+          </div>
 
-                try {
-                    const responseText = await sendMessageToGemini(formData);
-                    setGeminiResponse(responseText);
-                    setIsSubmitted(true);
-                    setFormData({ name: '', email: '', message: '' });
-                } catch (error) {
-                    console.error("Error in contact form submission:", error);
-                    setGeminiResponse("We're sorry, but an unexpected error occurred while processing your message. Our team has been notified.\n\nPlease try again later, or feel free to contact us directly via WhatsApp or Instagram.");
-                    setIsSubmitted(true);
-                } finally {
-                    setIsSubmitting(false);
-                }
-            };
-            
-            const handleReset = () => {
-                setIsSubmitted(false);
-                setGeminiResponse('');
-            };
-        
-            return React.createElement('section', { id: "contact", className: "py-20 gradient-bg-section" },
-                React.createElement('div', { className: "container mx-auto px-4 sm:px-6" },
-                    React.createElement('div', { className: "text-center mb-12 animate-on-scroll animate-fade-up" },
-                        React.createElement('h2', { className: "text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 hero-title-shadow" }, "Let's Develop Something Together!"),
-                        React.createElement('p', { className: "text-slate-300 max-w-3xl mx-auto" }, "Have a question or a custom project in mind? Fill out the form below or reach out to us directly.")
-                    ),
-                    React.createElement('div', { className: "max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 animate-on-scroll animate-fade-up" },
-                        React.createElement('div', { className: "bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8" },
-                            isSubmitted ?
-                                React.createElement('div', { className: "flex flex-col justify-center h-full text-left" },
-                                    React.createElement('h3', { className: "text-2xl font-bold text-white mb-2" }, "Message Sent!"),
-                                    React.createElement('p', { className: "text-gray-400 mb-4" }, "Here's a response from our AI assistant:"),
-                                    React.createElement('div', { className: "bg-slate-800 p-4 rounded-lg border border-slate-700 whitespace-pre-wrap text-gray-300 mb-6 min-h-[200px] max-h-64 overflow-y-auto" }, geminiResponse),
-                                    React.createElement('button', { onClick: handleReset, className: "w-full bg-brand-blue text-white font-bold py-3 px-4 rounded-lg hover:bg-brand-blue/90 transition-colors duration-300" }, "Send Another Message")
-                                ) :
-                                React.createElement('form', { onSubmit: handleSubmit },
-                                    React.createElement('h3', { className: "text-2xl font-bold text-white mb-6" }, "Send us a Message"),
-                                    React.createElement('div', { className: "mb-4" },
-                                        React.createElement('label', { htmlFor: "name", className: "block text-gray-400 text-sm font-bold mb-2" }, "Your Name"),
-                                        React.createElement('input', { type: "text", id: "name", name: "name", value: formData.name, onChange: handleChange, required: true, className: "w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue transition" })
-                                    ),
-                                    React.createElement('div', { className: "mb-4" },
-                                        React.createElement('label', { htmlFor: "email", className: "block text-gray-400 text-sm font-bold mb-2" }, "Your Email"),
-                                        React.createElement('input', { type: "email", id: "email", name: "email", value: formData.email, onChange: handleChange, required: true, className: "w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue transition" })
-                                    ),
-                                    React.createElement('div', { className: "mb-6" },
-                                        React.createElement('label', { htmlFor: "message", className: "block text-gray-400 text-sm font-bold mb-2" }, "Your Message"),
-                                        React.createElement('textarea', { id: "message", name: "message", rows: "4", value: formData.message, onChange: handleChange, required: true, className: "w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue transition" })
-                                    ),
-                                    React.createElement('button', { type: "submit", disabled: isSubmitting, className: "w-full bg-brand-orange text-white font-bold py-3 px-4 rounded-lg hover:bg-brand-orange/90 transition-all duration-300 disabled:bg-slate-600 disabled:cursor-not-allowed flex items-center justify-center" },
-                                        isSubmitting && React.createElement('svg', { className: "animate-spin -ml-1 mr-3 h-5 w-5 text-white", xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24" }, React.createElement('circle', { className: "opacity-25", cx: "12", cy: "12", r: "10", stroke: "currentColor", strokeWidth: "4" }), React.createElement('path', { className: "opacity-75", fill: "currentColor", d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" })),
-                                        isSubmitting ? 'Sending...' : 'Send Message'
-                                    )
-                                )
-                        ),
-                        React.createElement('div', { className: "flex flex-col justify-center text-center md:text-left" },
-                            React.createElement('h3', { className: "text-2xl font-bold text-white mb-4" }, "Or Connect Directly"),
-                            React.createElement('p', { className: "text-slate-400 mb-8" }, "For instant responses and quick chats, find us on your favorite platform."),
-                            React.createElement('div', { className: "flex flex-col sm:flex-row justify-center md:justify-start items-center gap-4" },
-                                React.createElement('a', { href: "https://wa.me/917822916318", target: "_blank", rel: "noopener noreferrer", className: "w-full sm:w-auto text-center bg-green-500 text-white font-bold px-8 py-4 rounded-lg text-lg transform hover:scale-105 transition-transform duration-300 glow-effect" }, "Chat on WhatsApp"),
-                                React.createElement('a', { href: "https://www.instagram.com/codenbuild_support?igsh=bjNuYXk1anY0NGE1", target: "_blank", rel: "noopener noreferrer", className: "w-full sm:w-auto text-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white font-bold px-8 py-4 rounded-lg text-lg transform hover:scale-105 transition-transform duration-300 glow-effect" }, "Message on Instagram")
-                            )
-                        )
-                    )
-                )
-            );
-        };
+          <div>
+            <h4 class="font-semibold text-sky-400 mb-1">
+              Terms &amp; Conditions
+            </h4>
+            <p>
+              DIY Kits Only: We provide DIY kits, not ready-made projects.
+              Students build projects themselves, keeping them compliant with
+              college rules.
+              <br /><br />
+              Educational Use: Kits are for personal learning and
+              experimentation. Commercial resale or claiming as pre-built work
+              is prohibited.
+              <br /><br />
+              Liability: We are not responsible for misuse or damages. Follow
+              instructions carefully.
+              <br /><br />
+              Refunds: Only for damaged or missing kit parts, reported within 7
+              days.
+              <br /><br />
+              Intellectual Property: All content, images, and designs are owned
+              by CodenBuild. Unauthorized use is prohibited.
+              <br /><br />
+              Legal Compliance: By using our site and kits, you agree to follow
+              all applicable laws and college policies.
+            </p>
+          </div>
+        </div>
+      </div>
 
-        const Footer = () => React.createElement('footer', { className: "relative border-t border-slate-800 bg-slate-950" },
-            React.createElement('div', { className: "container mx-auto px-4 sm:px-6 py-12 text-gray-400" },
-                React.createElement('div', { className: "grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 text-left" },
-                    React.createElement('div', null,
-                        React.createElement('h3', { className: "text-lg font-semibold text-white mb-4" }, "Privacy Policy"),
-                        React.createElement('p', { className: "text-sm text-gray-500" }, "At CodenBuild, we respect your privacy. We only collect personal information (name, email, phone) to process orders and deliver DIY kits. Payment details are handled securely via trusted payment gateways. We do not share your information with third parties except for delivery purposes or as required by law. You can request deletion or correction of your data anytime. Minimal cookies are used for website functionality only.")
-                    ),
-                    React.createElement('div', null,
-                        React.createElement('h3', { className: "text-lg font-semibold text-white mb-4" }, "Terms & Conditions"),
-                         React.createElement('ul', { className: "text-sm text-gray-500 space-y-2" },
-                            React.createElement('li', null, React.createElement('strong', null, "DIY Kits Only: "), "We provide DIY kits, not ready-made projects. Students build projects themselves, keeping them compliant with college rules."),
-                            React.createElement('li', null, React.createElement('strong', null, "Educational Use: "), "Kits are for personal learning and experimentation. Commercial resale or claiming as pre-built work is prohibited."),
-                            React.createElement('li', null, React.createElement('strong', null, "Liability: "), "We are not responsible for misuse or damages. Follow instructions carefully."),
-                            React.createElement('li', null, React.createElement('strong', null, "Refunds: "), "Only for damaged or missing kit parts, reported within 7 days."),
-                            React.createElement('li', null, React.createElement('strong', null, "Intellectual Property: "), "All content, images, and designs are owned by CodenBuild. Unauthorized use is prohibited."),
-                            React.createElement('li', null, React.createElement('strong', null, "Legal Compliance: "), "By using our site and kits, you agree to follow all applicable laws and college policies.")
-                        )
-                    )
-                ),
-                React.createElement('div', { className: "border-t border-slate-800 pt-8 text-center" },
-                    React.createElement('p', null, `© ${new Date().getFullYear()} codeNbuild. All Rights Reserved.`)
-                )
-            )
-        );
+      <div class="mt-6 text-center text-xs text-slate-500">
+        &copy; <span id="year"></span> Codenbuild. All rights reserved.
+      </div>
+    </div>
+  </footer>
 
-        const App = () => {
-            const [theme, setTheme] = useState('dark');
-            const [showProjectsModal, setShowProjectsModal] = useState(false);
-            
-            useScrollAnimation();
+  <!-- Floating WhatsApp Button -->
+  <a
+    href="https://wa.me/7822916318"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat with Codenbuild on WhatsApp"
+    title="Chat with Codenbuild on WhatsApp"
+    class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="26"
+      height="26"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path
+        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+      ></path>
+    </svg>
+  </a>
 
-            useEffect(() => {
-                const savedTheme = localStorage.getItem('theme') || 'dark';
-                setTheme(savedTheme);
-                document.documentElement.className = savedTheme;
-                document.body.className = `${savedTheme} text-gray-800 dark:text-gray-300 antialiased`;
-
-            }, []);
-            
-            const toggleTheme = () => {
-                const newTheme = theme === 'light' ? 'dark' : 'light';
-                setTheme(newTheme);
-                localStorage.setItem('theme', newTheme);
-                document.documentElement.className = newTheme;
-                document.body.className = `${newTheme} text-gray-800 dark:text-gray-300 antialiased`;
-            };
-            
-            return React.createElement(React.Fragment, null,
-                React.createElement(Header, { theme: theme, toggleTheme: toggleTheme, onShowProjects: () => setShowProjectsModal(true) }),
-                React.createElement('main', null,
-                    React.createElement(HeroSection, { onShowProjects: () => setShowProjectsModal(true) }),
-                    React.createElement(ServicesSection),
-                    React.createElement(GuidanceSection),
-                    React.createElement(ProcessSection),
-                    React.createElement(TestimonialsSection),
-                    React.createElement(BlogSection),
-                    React.createElement(AboutSection),
-                    React.createElement(FAQSection),
-                    React.createElement(ContactSection)
-                ),
-                React.createElement(Footer),
-                showProjectsModal && React.createElement(ProjectsViewModal, { onClose: () => setShowProjectsModal(false) }),
-                React.createElement('a', { href: "https://wa.me/917822916318", target: "_blank", rel: "noopener noreferrer", className: "fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform z-50" },
-                    React.createElement('svg', { width: "32", height: "32", viewBox: "0 0 24 24" }, React.createElement('path', { fill: "currentColor", d: "M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.05 3.67c4.5 0 8.16 3.66 8.16 8.16s-3.66 8.16-8.16 8.16c-1.48 0-2.91-.4-4.18-1.11l-.3-.18-3.12.82.83-3.04-.2-.32a8.12 8.12 0 0 1-1.26-4.33c0-4.5 3.66-8.16 8.16-8.16zm3.8 9.24c-.22-.11-1.29-.64-1.49-.71-.2-.07-.35-.11-.49.11-.15.22-.56.71-.69.85-.13.15-.26.17-.48.06-.22-.11-1.02-.38-1.94-1.2s-1.4-1.51-1.56-1.76c-.17-.25-.02-.38.1-.5.11-.11.24-.28.37-.42.12-.15.16-.25.24-.42.08-.17.04-.31-.02-.42s-.49-1.19-.68-1.62c-.18-.43-.36-.37-.49-.37-.13 0-.28-.01-.42-.01-.15 0-.39.06-.59.28-.2.22-.76.74-.76 1.8 0 1.06.78 2.08.89 2.23.11.15 1.53 2.4 3.7 3.25.54.21.97.34 1.31.43.54.15 1.03.13 1.42.08.43-.05 1.29-.52 1.47-.98.18-.47.18-.87.13-.98-.05-.11-.19-.17-.42-.28z" }))
-                ),
-                React.createElement(BackToTopButton)
-            );
-        };
-
-        const rootElement = document.getElementById('root');
-        if (!rootElement) {
-          throw new Error("Could not find root element to mount to");
-        }
-
-        const root = ReactDOM.createRoot(rootElement);
-        root.render(
-          React.createElement(React.StrictMode, null, React.createElement(App))
-        );
-    </script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
