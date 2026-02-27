@@ -1,832 +1,994 @@
+
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta name="google-site-verification" content="kfKoqMSEzu1_p-nsfqkOAiO3B6KHCl3TGZbix7kx1tY" />
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
-  <title>Codenbuild – DIY Engineering Project Kits, Robotics & IoT with Mentorship</title>
-
-  <!-- SEO -->
-  <meta
-    name="description"
-    content="Codenbuild provides DIY engineering project kits, robotics and IoT projects, Arduino kits and mentorship for school, diploma and engineering students. Build, understand and present your projects with expert guidance."
-  />
-  <meta
-    name="keywords"
-    content="Codenbuild, DIY project kits, engineering projects, robotics projects, IoT projects, Arduino projects, mini projects, major projects, project guidance, mentorship, electronics kits"
-  />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://codenbuild.netlify.app/" />
-
-  <!-- Open Graph -->
-  <meta
-    property="og:title"
-    content="Codenbuild – DIY Engineering Project Kits, Robotics & IoT with Mentorship"
-  />
-  <meta
-    property="og:description"
-    content="Order DIY robotics, IoT, Arduino and software project kits with mentorship for school, diploma and engineering students."
-  />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://codenbuild.netlify.app/" />
-  <meta property="og:site_name" content="Codenbuild" />
-  <!-- Replace og-image.jpg with your real image file in site root -->
-  <meta property="og:image" content="https://codenbuild.netlify.app/og-image.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Codenbuild – DIY Engineering Project Kits, Robotics & IoT" />
-  <meta
-    name="twitter:description"
-    content="DIY project kits + mentorship for robotics, IoT, Arduino and software projects."
-  />
-  <meta name="twitter:image" content="https://codenbuild.netlify.app/og-image.jpg" />
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-    body {
-      font-family: "Inter", sans-serif;
-      background: linear-gradient(-45deg, #020617, #0b1120, #0f172a, #005bff);
-      background-size: 400% 400%;
-      animation: gradientBG 25s ease infinite;
-    }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .gradient-text {
-      background: linear-gradient(90deg, #38bdf8, #22c55e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-title-shadow {
-      text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
-    }
-    .glow-effect {
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4),
-                  0 0 25px rgba(34, 197, 94, 0.3);
-      transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
-    .glow-effect:hover {
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.7),
-                  0 0 40px rgba(34, 197, 94, 0.5);
-      transform: translateY(-2px);
-    }
-    .section-bg {
-      background: radial-gradient(ellipse at top, #020617 0%, #020617 100%);
-    }
-  </style>
-
-  <!-- Schema.org: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Codenbuild",
-    "url": "https://codenbuild.netlify.app/",
-    "logo": "https://codenbuild.netlify.app/og-image.jpg",
-    "sameAs": [
-      "https://www.instagram.com/codenbuild_support",
-      "https://medium.com/@sohamthakarest15"
-    ],
-    "description": "Codenbuild provides DIY engineering project kits, robotics and IoT projects, Arduino kits and mentorship for students."
-  }
-  </script>
-
-  <!-- Schema.org: FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Do you give ready-made projects or DIY kits?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We provide DIY kits with guidance, not ready-made submissions. You build the project yourself with our help, which keeps you safe with college rules and helps you actually understand your work."
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codenbuild | Engineering & Innovation Platform</title>
+    <meta name="description" content="Codenbuild is a practical learning platform for engineering students offering 150+ projects in Robotics, IoT, AI, and Electronics with DIY kits and mentorship.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: { brand: { dark: '#0f172a', primary: '#2563eb' } },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
         }
-      },
-      {
-        "@type": "Question",
-        "name": "I don’t know much coding. Can I still do a project?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. We recommend beginner-friendly kits and guide you step by step. You’ll get code templates, explanations, and doubt support so you can learn while building."
+    </script>
+    <style>
+        body { 
+            background-color: #f8fafc; 
+            background-image: linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px); 
+            background-size: 32px 32px; 
+            scroll-behavior: smooth;
         }
-      },
-      {
-        "@type": "Question",
-        "name": "How does rental of components work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You rent components like Arduino, sensors, and driver modules for a fixed period. A refundable security deposit is taken, which is returned when you return all parts safely."
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
+        .nav-item.active { background-color: #eff6ff; color: #2563eb; font-weight: 600; }
+        .fade-in { animation: fadeInUp 0.5s ease-out; }
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1); }
+        
+        /* Mobile Swipe Utilities */
+        .snap-x-mandatory { scroll-snap-type: x mandatory; }
+        .snap-center { scroll-snap-align: center; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Custom Scrollbar for Desktop */
+        @media (min-width: 768px) {
+            ::-webkit-scrollbar { width: 8px; }
+            ::-webkit-scrollbar-track { background: #f1f1f1; }
+            ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+            ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         }
-      },
-      {
-        "@type": "Question",
-        "name": "Will you help with PPT, report and viva questions?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Along with the kit, we support you with explanation, basic documentation structure and viva preparation so you can present confidently."
+
+        /* Floating CTA Animations */
+        .fab-menu-enter { opacity: 0; transform: scale(0.9) translateY(10px); pointer-events: none; }
+        .fab-menu-enter-active { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .glow-effect { box-shadow: 0 0 15px rgba(37, 99, 235, 0.5); animation: pulse-glow 2s infinite; }
+        @keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); } }
+    
+        /* Custom Glow Effect for Award */
+        .hover-glow-gold { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-glow-gold:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 0 25px rgba(234, 179, 8, 0.2); 
         }
-      }
-    ]
-  }
-  </script>
+    </style>
 </head>
-<body class="text-white">
-  <!-- HEADER -->
-  <header class="sticky top-0 z-30 bg-slate-950/70 backdrop-blur border-b border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-2">
-        <div class="h-9 w-9 rounded-xl bg-sky-500 flex items-center justify-center">
-          <span class="font-black text-xl">CB</span>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.router.navigate('home')">
+                <img src="https://raw.githubusercontent.com/codenbuild01-droid/code-n-build/refs/heads/main/CODENBUILDLOGO.jpeg" alt="Codenbuild Logo" class="h-12 w-auto object-contain">
+                <div class="hidden md:block">
+                    <h1 class="text-xl font-bold text-slate-900 leading-none">Codenbuild</h1>
+                    <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mt-1">Practical Learning</p>
+                </div>
+            </div>
+            <div class="hidden lg:flex items-center gap-1 bg-white/50 p-1 rounded-full border border-slate-200/50">
+                <button onclick="window.router.navigate('home')" id="nav-home" class="nav-item px-4 py-2 rounded-full text-sm font-medium transition-colors">Home</button>
+                <button onclick="window.router.navigate('catalog')" id="nav-catalog" class="nav-item px-4 py-2 rounded-full text-sm font-medium transition-colors">Project Library</button>
+                <button onclick="window.router.navigate('virtuallab')" id="nav-virtuallab" class="nav-item px-4 py-2 rounded-full text-sm font-medium transition-colors">Virtual Lab</button>
+                <button onclick="window.router.navigate('blog')" id="nav-blog" class="nav-item px-4 py-2 rounded-full text-sm font-medium transition-colors">Insights</button>
+                <button onclick="window.router.navigate('about')" id="nav-about" class="nav-item px-4 py-2 rounded-full text-sm font-medium transition-colors">About</button>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="window.router.openBuyModal('Codenbuild Project Kit')" class="hidden md:flex items-center gap-2 text-xs font-bold bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors shadow-md">
+                    <i data-lucide="shopping-bag" class="w-4 h-4"></i> Buy Now
+                </button>
+                <button onclick="window.toggleMobileMenu()" class="lg:hidden p-2"><i data-lucide="menu"></i></button>
+            </div>
         </div>
-        <span class="font-bold text-lg md:text-xl">Codenbuild</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#about" class="hover:text-sky-300">About</a>
-        <a href="#kits" class="hover:text-sky-300">Kits</a>
-        <a href="#projects" class="hover:text-sky-300">Projects</a>
-        <a href="#pricing" class="hover:text-sky-300">Pricing</a>
-        <a href="#faq" class="hover:text-sky-300">FAQ</a>
-        <a href="#blogs" class="hover:text-sky-300">Blogs</a>
-        <a href="#contact" class="hover:text-sky-300">Contact</a>
-        <a
-          href="https://forms.gle/ksP2BdhMxQs4nPkX8"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="ml-4 bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm glow-effect"
-        >Start Your Project</a>
-      </nav>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b p-4 shadow-xl flex flex-col gap-2">
+            <button onclick="window.router.navigate('home'); window.toggleMobileMenu()" class="text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium">Home</button>
+            <button onclick="window.router.navigate('catalog'); window.toggleMobileMenu()" class="text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium">Project Library</button>
+            <button onclick="window.router.navigate('virtuallab'); window.toggleMobileMenu()" class="text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium">Virtual Lab</button>
+            <button onclick="window.router.navigate('blog'); window.toggleMobileMenu()" class="text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium">Insights</button>
+            <button onclick="window.router.navigate('about'); window.toggleMobileMenu()" class="text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium">About</button>
+            <button onclick="window.router.navigate('policies'); window.toggleMobileMenu()" class="text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium">Privacy & Policies</button>
+        </div>
+    </nav>
+
+    <main id="app-container" class="flex-grow pt-28 pb-12 w-full overflow-hidden">
+        <!-- JS Injection -->
+    </main>
+
+    <!-- Floating Action Button (FAB) -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
+        <!-- Expanded Menu -->
+        <div id="fab-menu" class="hidden fab-menu-enter flex flex-col gap-3 items-end mb-2">
+            <button onclick="window.open('https://wa.me/917822916318', '_blank')" class="bg-white text-green-600 px-4 py-2 rounded-full shadow-lg font-bold text-sm flex items-center gap-2 border border-green-100 hover:bg-green-50 transition-colors">
+                <span>Buy on WhatsApp</span>
+                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center"><i data-lucide="message-circle" class="w-4 h-4"></i></div>
+            </button>
+            <button onclick="window.router.navigate('catalog'); window.toggleFab()" class="bg-white text-blue-600 px-4 py-2 rounded-full shadow-lg font-bold text-sm flex items-center gap-2 border border-blue-100 hover:bg-blue-50 transition-colors">
+                <span>Browse Projects</span>
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"><i data-lucide="search" class="w-4 h-4"></i></div>
+            </button>
+            <button onclick="window.open('mailto:codenbuild01@gmail.com')" class="bg-white text-slate-600 px-4 py-2 rounded-full shadow-lg font-bold text-sm flex items-center gap-2 border border-slate-100 hover:bg-slate-50 transition-colors">
+                <span>Email Support</span>
+                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center"><i data-lucide="mail" class="w-4 h-4"></i></div>
+            </button>
+        </div>
+        
+        <!-- Main Button -->
+        <button onclick="window.toggleFab()" id="fab-main-btn" class="bg-blue-600 hover:bg-blue-700 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center glow-effect transition-transform active:scale-95">
+            <i data-lucide="plus" id="fab-icon" class="w-8 h-8 transition-transform duration-300"></i>
+        </button>
     </div>
-  </header>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="section-bg">
-      <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h1 class="hero-title-shadow text-3xl md:text-5xl font-black leading-tight">
-            Build Real <span class="gradient-text">Hardware & Software</span>
-            Projects with Codenbuild
-          </h1>
-          <p class="mt-4 text-slate-200 text-sm md:text-base">
-            Codenbuild helps engineering and school students build robotics,
-            IoT, and software projects with ready-to-use DIY kits, rentals, and
-            one-on-one mentor guidance—until your final submission and viva are
-            done.
-          </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <!-- Main CTA: gradient button -->
-            <a
-              href="#kits"
-              class="bg-gradient-to-r from-sky-500 to-emerald-400 hover:from-sky-600 hover:to-emerald-500 text-slate-950 font-semibold px-5 py-3 rounded-lg text-sm md:text-base shadow-md glow-effect"
-            >Explore Project Kits</a>
-            <!-- Secondary CTA: outline -->
-            <a
-              href="https://wa.me/7822916318"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="border border-sky-400 text-sky-300 hover:bg-sky-500/10 font-semibold px-5 py-3 rounded-lg text-sm md:text-base"
-            >Chat on WhatsApp</a>
-          </div>
-        </div>
-
-        <!-- Hero image -->
-        <div class="relative">
-          <div class="rounded-2xl overflow-hidden border border-slate-700 bg-slate-900/70 glow-effect">
-            <img
-              src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt="Students working on DIY robotics and electronics project kits"
-              class="w-full h-72 md:h-80 object-cover"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="py-16 bg-slate-950/60 border-t border-slate-800">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="max-w-3xl">
-          <h2 class="text-2xl md:text-3xl font-black mb-3">
-            About <span class="gradient-text">Codenbuild</span>
-          </h2>
-          <p class="text-sm md:text-base text-slate-200">
-            Codenbuild is a student-led startup formed by engineering students
-            who wanted to make projects simpler, more practical, and less
-            stressful for others. Instead of just selling ready-made work, we
-            focus on helping you actually learn by building.
-          </p>
-          <p class="mt-3 text-sm md:text-base text-slate-200">
-            We provide ready-to-use kits, rental options, and mentor guidance
-            so that you don't just submit a project—you understand it, present
-            it confidently, and feel proud of what you’ve built.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- KITS (with images) -->
-    <section id="kits" class="py-16 bg-slate-950/70 border-t border-slate-800">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-black">
-            Popular <span class="gradient-text">DIY Project Kits</span>
-          </h2>
-          <p class="mt-3 text-sm md:text-base text-slate-300">
-            Choose from beginner-friendly to advanced kits. All include
-            guidance and support.
-          </p>
-        </div>
-
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <!-- Kit 1 -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
-            <img
-              src="https://picsum.photos/seed/obstaclebot/600/400"
-              alt="DIY obstacle avoiding robot kit for engineering students"
-              class="w-full h-40 object-cover rounded-lg mb-3"
-            />
-            <h3 class="font-bold text-lg mb-1">Obstacle Avoiding Robot Kit</h3>
-            <p class="text-sm text-slate-300 flex-grow">
-              Build an autonomous robot using Arduino, motors and ultrasonic
-              sensors. Ideal for diploma & degree mini-projects.
-            </p>
-            <p class="mt-3 text-xs text-slate-400">
-              Level: Beginner–Intermediate • Hardware + Code + Guidance
-            </p>
-          </div>
-
-          <!-- Kit 2 -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
-            <img
-              src="https://picsum.photos/seed/firebot/600/400"
-              alt="Fire fighting robot project kit with guidance"
-              class="w-full h-40 object-cover rounded-lg mb-3"
-            />
-            <h3 class="font-bold text-lg mb-1">Fire Fighting Robot Kit</h3>
-            <p class="text-sm text-slate-300 flex-grow">
-              A robot that detects fire and moves to extinguish it. Great for
-              competitions and college events.
-            </p>
-            <p class="mt-3 text-xs text-slate-400">
-              Level: Intermediate • Sensors + Motors + Control
-            </p>
-          </div>
-
-          <!-- Kit 3 -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
-            <img
-              src="https://picsum.photos/seed/irrigation/600/400"
-              alt="IoT smart irrigation DIY project kit"
-              class="w-full h-40 object-cover rounded-lg mb-3"
-            />
-            <h3 class="font-bold text-lg mb-1">IoT Smart Irrigation Kit</h3>
-            <p class="text-sm text-slate-300 flex-grow">
-              Monitor soil moisture and control pumps using NodeMCU/ESP. Perfect
-              for agriculture & IoT-based projects.
-            </p>
-            <p class="mt-3 text-xs text-slate-400">
-              Level: Intermediate • IoT + Sensors + Cloud
-            </p>
-          </div>
-
-          <!-- Kit 4 -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
-            <img
-              src="https://picsum.photos/seed/homeauto/600/400"
-              alt="Smart home automation embedded system project kit"
-              class="w-full h-40 object-cover rounded-lg mb-3"
-            />
-            <h3 class="font-bold text-lg mb-1">Smart Home Automation Kit</h3>
-            <p class="text-sm text-slate-300 flex-grow">
-              Control lights and appliances using switches/app. Learn relays,
-              safety and embedded logic.
-            </p>
-            <p class="mt-3 text-xs text-slate-400">
-              Level: Intermediate • Embedded + Power Control
-            </p>
-          </div>
-
-          <!-- Kit 5 -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
-            <img
-              src="https://picsum.photos/seed/arduino/600/400"
-              alt="Arduino beginner kit for first year engineering students"
-              class="w-full h-40 object-cover rounded-lg mb-3"
-            />
-            <h3 class="font-bold text-lg mb-1">Arduino Starter Kit</h3>
-            <p class="text-sm text-slate-300 flex-grow">
-              All basic components + example projects to get started with
-              embedded systems and sensors.
-            </p>
-            <p class="mt-3 text-xs text-slate-400">
-              Level: Beginner • Best for first-year students
-            </p>
-          </div>
-
-          <!-- Kit 6 -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
-            <img
-              src="https://picsum.photos/seed/customkit/600/400"
-              alt="Custom electronics and IoT project kit for college submissions"
-              class="w-full h-40 object-cover rounded-lg mb-3"
-            />
-            <h3 class="font-bold text-lg mb-1">Custom Project Kit</h3>
-            <p class="text-sm text-slate-300 flex-grow">
-              Have your own idea? We help design and build a custom kit
-              tailored to your requirements and submission date.
-            </p>
-            <p class="mt-3 text-xs text-slate-400">
-              Level: Custom • Mini or Major projects
-            </p>
-          </div>
-        </div>
-
-        <div class="text-center mt-8">
-          <!-- Solid blue CTA -->
-          <a
-            href="https://forms.gle/ksP2BdhMxQs4nPkX8"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold px-6 py-3 rounded-lg text-sm md:text-base shadow-md glow-effect"
-          >Fill the Form to Book Your Kit</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS PAGE SECTION -->
-    <section id="projects" class="py-16 bg-slate-950/80 border-t border-slate-800">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-black">
-            All <span class="gradient-text">Project Categories</span>
-          </h2>
-          <p class="mt-3 text-sm md:text-base text-slate-300">
-            Explore different domains you can build with Codenbuild.
-          </p>
-        </div>
-
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <!-- Robotics -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
-            <h3 class="font-bold text-lg mb-2">Robotics & Automation</h3>
-            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
-              <li>Obstacle Avoiding Robot</li>
-              <li>Fire Fighting Robot</li>
-              <li>Line Follower Robot</li>
-              <li>Pick & Place Robotic Arm</li>
-            </ul>
-          </div>
-
-          <!-- IoT -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
-            <h3 class="font-bold text-lg mb-2">IoT & Smart Systems</h3>
-            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
-              <li>Smart Irrigation System</li>
-              <li>Smart Parking with Ultrasonic Sensors</li>
-              <li>Home Automation with App Control</li>
-              <li>IoT Weather Monitoring Station</li>
-            </ul>
-          </div>
-
-          <!-- Core Electronics -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
-            <h3 class="font-bold text-lg mb-2">Core Electronics</h3>
-            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
-              <li>Sensor Based Security Systems</li>
-              <li>Traffic Light Controller</li>
-              <li>Energy Monitoring Projects</li>
-              <li>Lab-Based Mini Experiments</li>
-            </ul>
-          </div>
-
-          <!-- Software -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
-            <h3 class="font-bold text-lg mb-2">Software & Web</h3>
-            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
-              <li>College Management System</li>
-              <li>E-commerce Website</li>
-              <li>Real-time Chat App</li>
-              <li>Portfolio Website</li>
-            </ul>
-          </div>
-
-          <!-- ML / Data -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
-            <h3 class="font-bold text-lg mb-2">AI, ML & Data</h3>
-            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
-              <li>Disease Detection (concept prototypes)</li>
-              <li>Prediction Dashboards</li>
-              <li>Data Analysis Mini Projects</li>
-              <li>Recommendation Concept Projects</li>
-            </ul>
-          </div>
-
-          <!-- Custom -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5">
-            <h3 class="font-bold text-lg mb-2">Custom College Projects</h3>
-            <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
-              <li>Mini + Major project planning</li>
-              <li>Idea validation & refinement</li>
-              <li>Documentation & presentation support</li>
-              <li>End-to-end build with guidance</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="text-center mt-8">
-          <!-- Outline CTA -->
-          <a
-            href="https://wa.me/7822916318"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block border border-sky-400 text-sky-300 hover:bg-sky-500/10 font-semibold px-6 py-3 rounded-lg text-sm md:text-base glow-effect"
-          >Discuss Your Project Idea →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING OVERVIEW -->
-    <section id="pricing" class="py-16 bg-slate-950/80 border-t border-slate-800">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-black">
-            Simple <span class="gradient-text">Pricing & Options</span>
-          </h2>
-          <p class="mt-3 text-sm md:text-base text-slate-300">
-            Choose what suits you: full kit, rental, or only mentorship.
-          </p>
-        </div>
-
-        <div class="grid gap-6 md:grid-cols-3">
-          <!-- Full Kit -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-6 flex flex-col">
-            <h3 class="font-bold text-lg mb-2">Complete DIY Kit</h3>
-            <p class="text-sm text-slate-300 flex-grow">
-              All components + code + basic documentation + mentor support.
-            </p>
-            <p class="mt-4 text-xl font-bold text-sky-300">From ₹1499</p>
-            <p class="text-xs text-slate-400 mt-1">
-              Depends on project and components.
-            </p>
-          </div>
-
-          <!-- Rental -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-6 flex flex-col">
-            <h3 class="font-bold text-lg mb-2">Component Rental</h3>
-            <p class="text-sm text-slate-300 flex-grow">
-              Rent Arduino, sensors, modules and more for your own project.
-            </p>
-            <p class="mt-4 text-xl font-bold text-sky-300">From ₹99/week</p>
-            <p class="text-xs text-slate-400 mt-1">
-              Security deposit required. Refunded on safe return.
-            </p>
-          </div>
-
-          <!-- Mentorship -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-6 flex flex-col">
-            <h3 class="font-bold text-lg mb-2">Mentorship Only</h3>
-            <p class="text-sm text-slate-300 flex-grow">
-              Already have components? Get guidance on circuit, code,
-              debugging, PPT and viva.
-            </p>
-            <p class="mt-4 text-xl font-bold text-sky-300">
-              From ₹500 / project
-            </p>
-            <p class="text-xs text-slate-400 mt-1">
-              Custom quote for major projects.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="py-16 bg-slate-950/85 border-t border-slate-800">
-      <div class="max-w-4xl mx-auto px-4">
-        <div class="text-center mb-8">
-          <h2 class="text-2xl md:text-3xl font-black">
-            Frequently <span class="gradient-text">Asked Questions</span>
-          </h2>
-          <p class="mt-3 text-sm md:text-base text-slate-300">
-            Quick answers to common doubts students have.
-          </p>
-        </div>
-
-        <div class="space-y-4">
-          <details class="bg-slate-900/80 border border-slate-700 rounded-lg p-4">
-            <summary class="cursor-pointer font-semibold text-sm md:text-base">
-              Do you give ready-made projects or DIY kits?
-            </summary>
-            <p class="mt-2 text-sm text-slate-300">
-              We provide DIY kits with guidance, not ready-made submissions. You will
-              build the project yourself with our help, which keeps you safe with
-              college rules and helps you actually understand your work.
-            </p>
-          </details>
-
-          <details class="bg-slate-900/80 border border-slate-700 rounded-lg p-4">
-            <summary class="cursor-pointer font-semibold text-sm md:text-base">
-              I don’t know much coding. Can I still do a project?
-            </summary>
-            <p class="mt-2 text-sm text-slate-300">
-              Yes. We recommend beginner-friendly kits and guide you step by step.
-              You’ll get code templates, explanations, and doubt support so you can
-              learn while building.
-            </p>
-          </details>
-
-          <details class="bg-slate-900/80 border border-slate-700 rounded-lg p-4">
-            <summary class="cursor-pointer font-semibold text-sm md:text-base">
-              How does rental of components work?
-            </summary>
-            <p class="mt-2 text-sm text-slate-300">
-              You rent components like Arduino, sensors, and driver modules for a
-              fixed period. A refundable security deposit is taken, which is returned
-              when you return all parts safely.
-            </p>
-          </details>
-
-          <details class="bg-slate-900/80 border border-slate-700 rounded-lg p-4">
-            <summary class="cursor-pointer font-semibold text-sm md:text-base">
-              Will you help with PPT, report and viva questions?
-            </summary>
-            <p class="mt-2 text-sm text-slate-300">
-              Yes. Along with the kit, we support you with explanation, basic
-              documentation structure and viva preparation so you can present
-              confidently.
-            </p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="py-16 bg-slate-950/90 border-t border-slate-800">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-black">
-            What <span class="gradient-text">Students Say</span>
-          </h2>
-          <p class="mt-3 text-sm md:text-base text-slate-300">
-            Feedback from learners who built their projects with Codenbuild.
-          </p>
-        </div>
-
-        <div class="grid gap-6 md:grid-cols-3">
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
-            <p class="text-sm text-slate-200 italic">
-              "The kit quality was great and the guidance helped me understand every
-              part of the project. I was confident during my viva."
-            </p>
-            <p class="mt-4 text-xs text-slate-400">
-              – Computer Science Student
-            </p>
-          </div>
-
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
-            <p class="text-sm text-slate-200 italic">
-              "Renting components saved me a lot of money. I didn’t have to buy
-              everything for a one-time project and still completed on time."
-            </p>
-            <p class="mt-4 text-xs text-slate-400">
-              – Electronics Engineering Student
-            </p>
-          </div>
-
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-5 flex flex-col">
-            <p class="text-sm text-slate-200 italic">
-              "Codenbuild helped us plan a proper major project. The support from
-              planning to final submission was very helpful."
-            </p>
-            <p class="mt-4 text-xs text-slate-400">
-              – Final Year Project Team
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BLOGS -->
-    <section id="blogs" class="py-16 bg-slate-950/85 border-t border-slate-800">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-black">
-            Blogs &amp; <span class="gradient-text">Stories</span>
-          </h2>
-          <p class="mt-3 text-sm md:text-base text-slate-300">
-            Learn more about the story, vision and digital innovation behind Codenbuild.
-          </p>
-        </div>
-
-        <div class="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
-          <!-- Blog 1 -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-6 flex flex-col justify-between">
-            <div>
-              <h3 class="font-bold text-lg mb-1">
-                The Journey of Codenbuild — A Vision for Students
-              </h3>
-              <p class="text-sm text-slate-300">
-                How Codenbuild started as a student idea and grew into a project-driven
-                startup that empowers learners through hands-on building.
-              </p>
+    <!-- Buy Now Modal (Lead Capture) -->
+    <div id="buyModal" class="fixed inset-0 bg-slate-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm fade-in p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl relative border border-slate-100">
+            <button onclick="window.router.closeBuyModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-slate-100 rounded-full p-1 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 mb-1">Get Your Kit</h3>
+                <p class="text-sm text-slate-500">Fill details to connect with our mentor on WhatsApp.</p>
             </div>
-            <div class="mt-4">
-              <a
-                href="https://medium.com/@sohamthakarest15/the-journey-of-codenbuild-a-vision-by-founders-soham-thakre-and-ishwari-dambhe-09a3d19d889c"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm glow-effect"
-              >Read Blog</a>
+            
+            <div class="space-y-4 mb-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Selected Project</label>
+                    <input type="text" id="modalProjectName" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-100 text-slate-500 cursor-not-allowed font-medium text-sm" readonly>
+                </div>
+                
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Student Name <span class="text-red-500">*</span></label>
+                    <input type="text" id="studentNameInput" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 placeholder-slate-400 bg-white" placeholder="Enter your full name">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">WhatsApp Number <span class="text-red-500">*</span></label>
+                    <input type="tel" id="studentPhoneInput" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 placeholder-slate-400 bg-white" placeholder="e.g. 98765 43210">
+                </div>
             </div>
-          </div>
 
-          <!-- Blog 2 -->
-          <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-6 flex flex-col justify-between">
-            <div>
-              <h3 class="font-bold text-lg mb-1">
-                Codenbuild: Building the Future of Digital Innovation
-              </h3>
-              <p class="text-sm text-slate-300">
-                How Codenbuild is shaping future engineers by combining software,
-                hardware and real mentorship to build industry-ready skills.
-              </p>
-            </div>
-            <div class="mt-4">
-              <a
-                href="https://medium.com/@sohamthakarest15/codenbuild-building-the-future-of-digital-innovation-c52cf0d99056"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm glow-effect"
-              >Read Blog</a>
-            </div>
-          </div>
+            <p id="formError" class="text-red-500 text-xs mb-4 hidden flex items-center justify-center gap-1"><i data-lucide="alert-circle" class="w-3 h-3"></i> Please fill all required fields.</p>
+            
+            <button id="modalSubmitBtn" onclick="window.router.processBuy()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 transform active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed">
+                <span>Proceed to WhatsApp</span> <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+            <p class="text-[10px] text-center text-slate-400 mt-4">Your details are secure. You will be redirected to chat.</p>
         </div>
-
-        <!-- View All Blogs -->
-        <div class="text-center mt-10">
-          <a
-            href="https://medium.com/@sohamthakarest15"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block border border-sky-400 text-sky-300 hover:bg-sky-500/10 font-semibold px-6 py-3 rounded-lg text-sm glow-effect"
-          >View All Blogs →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="py-16 bg-slate-950/90 border-t border-slate-800">
-      <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-2xl md:text-3xl font-black mb-3">
-          Ready to <span class="gradient-text">Start Your Project?</span>
-        </h2>
-        <p class="text-sm md:text-base text-slate-300 mb-6">
-          Don’t wait until the last week before submission. Reach out now and
-          we’ll help you plan, build, and present your project with confidence.
-        </p>
-
-        <div class="flex flex-wrap justify-center gap-4">
-          <!-- Gradient CTA -->
-          <a
-            href="https://forms.gle/ksP2BdhMxQs4nPkX8"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-gradient-to-r from-sky-500 to-emerald-400 hover:from-sky-600 hover:to-emerald-500 text-slate-950 font-semibold px-6 py-3 rounded-lg text-sm md:text-base glow-effect"
-          >Fill Booking Form</a>
-          <!-- Green CTA -->
-          <a
-            href="https://wa.me/7822916318"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg text-sm md:text-base flex items-center gap-2"
-          >
-            <span>Chat on WhatsApp</span>
-          </a>
-          <!-- Pink CTA -->
-          <a
-            href="https://www.instagram.com/codenbuild_support"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-3 rounded-lg text-sm md:text-base"
-          >Follow on Instagram</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="bg-slate-950 border-t border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 py-8">
-      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-        <div class="md:w-1/3">
-          <h3 class="font-bold text-lg mb-2">Codenbuild</h3>
-          <p class="text-sm text-slate-300">
-            Student-led startup helping you build DIY robotics, IoT, Arduino and software
-            projects with real understanding—not just submissions. Ideal for school,
-            diploma and engineering mini / major projects.
-          </p>
-        </div>
-
-        <div class="md:w-2/3 text-sm text-slate-300 space-y-4">
-          <div>
-            <h4 class="font-semibold text-sky-400 mb-1">Privacy Policy</h4>
-            <p>
-              At CodenBuild, we respect your privacy. We only collect personal
-              information (name, email, phone) to process orders and deliver DIY
-              kits. Payment details are handled securely via trusted payment
-              gateways. We do not share your information with third parties
-              except for delivery purposes or as required by law. You can
-              request deletion or correction of your data anytime. Minimal
-              cookies are used for website functionality only.
-            </p>
-          </div>
-
-          <div>
-            <h4 class="font-semibold text-sky-400 mb-1">
-              Terms &amp; Conditions
-            </h4>
-            <p>
-              DIY Kits Only: We provide DIY kits, not ready-made projects.
-              Students build projects themselves, keeping them compliant with
-              college rules.
-              <br /><br />
-              Educational Use: Kits are for personal learning and
-              experimentation. Commercial resale or claiming as pre-built work
-              is prohibited.
-              <br /><br />
-              Liability: We are not responsible for misuse or damages. Follow
-              instructions carefully.
-              <br /><br />
-              Refunds: Only for damaged or missing kit parts, reported within 7
-              days.
-              <br /><br />
-              Intellectual Property: All content, images, and designs are owned
-              by CodenBuild. Unauthorized use is prohibited.
-              <br /><br />
-              Legal Compliance: By using our site and kits, you agree to follow
-              all applicable laws and college policies.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-6 text-center text-xs text-slate-500">
-        &copy; <span id="year"></span> Codenbuild. All rights reserved.
-      </div>
     </div>
-  </footer>
 
-  <!-- Floating WhatsApp Button -->
-  <a
-    href="https://wa.me/7822916318"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Chat with Codenbuild on WhatsApp"
-    title="Chat with Codenbuild on WhatsApp"
-    class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="26"
-      height="26"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path
-        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-      ></path>
-    </svg>
-  </a>
+    <footer class="bg-white border-t border-slate-200 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <span class="font-bold text-xl text-slate-900 block mb-4 flex items-center gap-2"><i data-lucide="cpu" class="text-blue-600"></i> Codenbuild</span>
+                <p class="text-sm text-slate-500 mb-6 max-w-sm">Empowering the next generation of engineers with hands-on projects, expert mentorship, and real-world skills. Built by students, for students.</p>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/codenbuild_support" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-pink-100 hover:text-pink-600 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="mailto:codenbuild01@gmail.com" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-blue-100 hover:text-blue-600 transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
+                    <a href="https://wa.me/917822916318" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-green-100 hover:text-green-600 transition-colors"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-slate-800">Learn</h4>
+                <ul class="space-y-2 text-sm text-slate-500">
+                    <li><button onclick="window.router.navigate('catalog')" class="hover:text-blue-600">Project Library</button></li>
+                    <li><button onclick="window.router.navigate('virtuallab')" class="hover:text-blue-600">Virtual Lab</button></li>
+                    <li><button onclick="window.router.navigate('blog')" class="hover:text-blue-600">Blogs</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-slate-800">Company</h4>
+                <ul class="space-y-2 text-sm text-slate-500">
+                    <li><button onclick="window.router.navigate('about')" class="hover:text-blue-600">About Us</button></li>
+                    <li><button onclick="window.router.navigate('policies')" class="hover:text-blue-600">Privacy & Policies</button></li>
+                    <li><a href="https://wa.me/917822916318" class="hover:text-blue-600">Contact Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-slate-100 text-center text-xs text-slate-400">
+            © 2026 Codenbuild Ed-Tech. All rights reserved.
+        </div>
+    </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <script>
+        // --- CONSTANTS ---
+        const WHATSAPP_NUMBER = "917822916318";
+        const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20sir%2C%20I%20want%20to%20know%20about%20Codenbuild.`;
+        const VIRTUAL_LAB_LINK = "https://codenbuildvirtuallab.netlify.app/";
+
+        // --- DATA GENERATION (150 PROJECTS) ---
+        const projects = [];
+        const levels = [
+            { id: 'starter', name: 'Starter Projects', priceMin: 999, priceMax: 999, badge: 'bg-blue-100 text-blue-700', border: 'bg-blue-500' },
+            { id: 'core', name: 'Core Learning Projects', priceMin: 1099, priceMax: 1299, badge: 'bg-emerald-100 text-emerald-700', border: 'bg-emerald-500' },
+            { id: 'applied', name: 'Applied Automation Projects', priceMin: 1499, priceMax: 1499, badge: 'bg-amber-100 text-amber-700', border: 'bg-amber-500' },
+            { id: 'advanced', name: 'Advanced Control Projects', priceMin: 1999, priceMax: 1999, badge: 'bg-red-100 text-red-700', border: 'bg-red-500' },
+            { id: 'robotics', name: 'Robotics & IoT Projects', priceMin: 2399, priceMax: 2499, badge: 'bg-violet-100 text-violet-700', border: 'bg-violet-500' }
+        ];
+
+        // Content Generators
+        const componentsPool = ["Arduino UNO", "NodeMCU ESP8266", "Servo Motor", "Ultrasonic Sensor", "IR Sensor", "Bluetooth Module HC-05", "Relay Module", "LCD Display", "Jumper Wires", "Battery Holder", "Chassis", "Motor Driver L298N", "DHT11 Sensor", "Soil Moisture Sensor"];
+        const applicationsPool = ["Home Automation", "Industrial Safety", "Smart Agriculture", "Health Monitoring", "Security Systems", "Traffic Management", "Education Tech", "Environmental Monitoring"];
+
+        function createProject(id, name, levelId) {
+            const level = levels.find(l => l.id === levelId);
+            const price = Math.floor(Math.random() * (level.priceMax - level.priceMin + 1)) + level.priceMin;
+            
+            const comps = [];
+            for(let i=0; i<4; i++) comps.push(componentsPool[Math.floor(Math.random()*componentsPool.length)]);
+            
+            return {
+                id: id,
+                name: name,
+                level: level.name,
+                levelId: level.id,
+                price: price,
+                badge: level.badge,
+                borderColor: level.border,
+                overview: `The **${name}** is a hands-on engineering project designed to solve real-world problems. It helps students master the fundamentals of ${level.name.split(' ')[0]} technology through practical building.`,
+                works: ["Connect power supply.", "Sensors detect environmental data.", "Microcontroller processes logic.", "Actuators trigger output."],
+                components: [...new Set(comps)],
+                outcomes: ["Circuit Designing", "Embedded Coding", "Logic Building", "Hardware Assembly"],
+                apps: applicationsPool[Math.floor(Math.random()*applicationsPool.length)]
+            };
+        }
+
+        // 1. STARTER (30)
+        const starterList = ["Water Level Indicator", "Automatic Street Light", "Gas Leakage Alarm", "Motion Sensor Alarm", "Touchless Door Bell", "Temperature Alert System", "Smart Dust Alarm", "Automatic Hand Sanitizer", "Fire Alarm System", "IR Counter System", "Laser Security Alarm", "Rain Water Detector", "Soil Dryness Indicator", "Clap Switch Circuit", "Darkness Activation Switch", "Wire Loop Game Circuit", "Simple Intruder Alarm", "LDR Morning Alarm", "Musical Bell Circuit", "Battery Level Indicator", "LED Chaser Circuit", "Mobile Signal Jammer Model", "Electronic Dice", "Stopwatch Circuit", "Simple Metal Detector", "Earthquake Vibration Alarm", "Fridge Door Alarm", "Plant Watering Indicator", "Light Activated Switch", "Touch On-Off Switch"];
+        starterList.forEach((n, i) => projects.push(createProject(i+1, n, 'starter')));
+
+        // 2. CORE (35)
+        const coreList = ["Distance Sensor System", "Smart Dustbin", "RFID Attendance System", "Automatic Railway Gate", "Smart Door Lock", "Digital Notice Board", "Visitor Counter", "Smart Fan Controller", "Fire & Smoke Detection System", "Digital Thermometer", "Ultrasonic Radar", "Traffic Light Controller", "Alcohol Breathalyzer", "LPG Gas Detector", "Sound Reactive LEDs", "Digital Voltmeter", "RPM Counter System", "Parking Sensor System", "Electronic Voting Machine", "Morse Code Decoder", "Light Intensity Meter", "Digital Ohm Meter", "Heartbeat Sensor Basic", "Reaction Time Game", "Color Detector", "Knock Lock System", "Piano using Arduino", "Digital Clock with Alarm", "Humidity & Temp Monitor", "Air Quality Monitor Basic", "Servo Motor Tester", "Water Flow Meter", "Speed Detector", "Object Counter", "Noise Level Monitor"];
+        coreList.forEach((n, i) => projects.push(createProject(31+i, n, 'core')));
+
+        // 3. APPLIED (35)
+        const appliedList = ["Laser Security System", "Soil Moisture System", "Automatic Plant Watering", "Home Automation Basic", "Smart Parking System", "Conveyor Belt Automation", "Smart Street Light Network", "Power Saving Automation", "Smart Water Flow Control", "Industrial Temp Controller", "Automatic Room Lights", "Gesture Control Switch", "Bluetooth Home Automation", "RFID Access Control", "Fingerprint Door Lock", "Password Based Lock", "Automatic Garage Door", "Solar Tracker System", "Weather Monitoring System", "Automatic Wiper System", "Smart Irrigation Logic", "Automatic Pet Feeder", "Medicine Reminder Box", "Blind Stick with Sound", "Currency Counter Logic", "Anti-Sleep Alarm for Drivers", "Overheat Protection System", "Current Monitoring System", "Automatic School Bell", "Library Management System", "Toll Gate Automation", "Car Reverse Parking Assistant", "Smart Warehouse Lighting", "Flood Detection System", "Earthquake Logger"];
+        appliedList.forEach((n, i) => projects.push(createProject(66+i, n, 'applied')));
+
+        // 4. ADVANCED (20)
+        const advancedList = ["Line Tower Fault Cutoff System", "Transformer Monitoring", "Motor Protection System", "Load Management System", "Voltage Stabilizer System", "Smart Grid Fault Detection", "Energy Analyzer", "Industrial Relay Control Panel", "Power Automation System", "Underground Cable Fault Detector", "Solar Power Manager", "Three Phase Fault Analysis", "Wireless Power Transfer", "SCADA Based Monitoring", "PLC Logic Simulation", "Induction Motor Controller", "Generator Auto Start", "Battery Management System", "Wireless Energy Meter", "Over Voltage Protection"];
+        advancedList.forEach((n, i) => projects.push(createProject(101+i, n, 'advanced')));
+
+        // 5. ROBOTICS (30)
+        const roboticsList = ["Obstacle Avoiding Robot", "Human Following Robot", "Fire Fighter Robot", "Smart Irrigation IoT System", "Smart Energy Meter IoT", "IoT Home Automation", "Smart Weather Monitoring", "GPS Tracking Robot", "Voice Controlled Robot", "Smart Agriculture Robot", "Bluetooth RC Car", "WiFi Controlled Robot", "Line Follower Robot", "Robotic Arm 4-DOF", "Spy Robot with Camera", "Gesture Controlled Robot", "IoT Health Monitoring", "IoT Air Pollution Meter", "Smart Garbage Monitoring", "IoT Flood Alert", "Self Balancing Robot", "Wall Following Robot", "Maze Solver Robot", "Pick and Place Robot", "Soccer Playing Robot", "Cleaning Robot", "Remote Surveillance Car", "IoT Smart Grid", "Voice Assistant Home", "Smart Mirror Display"];
+        roboticsList.forEach((n, i) => projects.push(createProject(121+i, n, 'robotics')));
+
+        // --- BLOG DATA ---
+        const blogs = [
+            { id: 1, title: "The Journey of Codenbuild — A Vision by Founders", category: "Startup Journey", summary: "Learn about the origins of Codenbuild and the vision that drives our founders, Soham Thakre and Ishwari Dambhe, to empower students.", link: "https://medium.com/@sohamthakarest15/the-journey-of-codenbuild-a-vision-by-founders-soham-thakre-and-ishwari-dambhe-09a3d19d889c" },
+            { id: 2, title: "How Codenbuild Helps Beginners Become Developers", category: "Learning Tips", summary: "Discover our unique approach to transforming beginners into skilled developers through hands-on projects and mentorship.", link: "https://medium.com/@sohamthakarest15/how-codenbuild-helps-beginners-become-developers-b36b710bcf64" },
+            { id: 3, title: "Building the Future of Digital Innovation", category: "Innovation", summary: "Explore how Codenbuild is shaping the future of digital innovation by bridging the gap between theoretical knowledge and real-world application.", link: "https://medium.com/@sohamthakarest15/codenbuild-building-the-future-of-digital-innovation-c52cf0d99056" }
+        ];
+
+        // --- APP LOGIC ---
+        const router = {
+            currentPage: 'home',
+            projectFilter: 'all',
+            searchQuery: '',
+            currentProjectId: null,
+            pendingProject: '', // To store project name for modal
+
+            updateSEO(title, description) {
+                document.title = title;
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) {
+                    metaDesc.setAttribute('content', description);
+                }
+            },
+
+            navigate(page, id = null) {
+                const container = document.getElementById('app-container');
+                // Smooth Fade Out
+                container.style.opacity = '0';
+                
+                setTimeout(() => {
+                    this.currentPage = page;
+                    this.currentProjectId = id;
+                    this.render();
+                    window.scrollTo(0, 0);
+                    
+                    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+                    const activeNav = document.getElementById(`nav-${page}`);
+                    if(activeNav) activeNav.classList.add('active');
+                    
+                    // Fade In
+                    container.style.opacity = '1';
+                    
+                    // Re-init lucide icons after render
+                    if(window.lucide) lucide.createIcons();
+                    this.attachEvents();
+                    
+                    // Trigger counter animation if on home
+                    if(page === 'home') this.initCounters();
+                }, 200); // Wait for fade out
+            },
+
+            // --- BUY MODAL LOGIC ---
+            openBuyModal(projectName) {
+                this.pendingProject = projectName;
+                const modal = document.getElementById('buyModal');
+                const projectInput = document.getElementById('modalProjectName');
+                const nameInput = document.getElementById('studentNameInput');
+                const phoneInput = document.getElementById('studentPhoneInput');
+                const error = document.getElementById('formError');
+                
+                // Reset Fields
+                modal.classList.remove('hidden');
+                modal.classList.add('flex'); // Use flex to show
+                projectInput.value = projectName;
+                nameInput.value = '';
+                phoneInput.value = '';
+                error.classList.add('hidden');
+                
+                setTimeout(() => nameInput.focus(), 100);
+            },
+
+            closeBuyModal() {
+                const modal = document.getElementById('buyModal');
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                this.pendingProject = '';
+            },
+
+            async processBuy() {
+                const nameInput = document.getElementById('studentNameInput');
+                const phoneInput = document.getElementById('studentPhoneInput');
+                const errorMsg = document.getElementById('formError');
+                const submitBtn = document.getElementById('modalSubmitBtn');
+                
+                const studentName = nameInput.value.trim();
+                const studentPhone = phoneInput.value.trim();
+
+                // Validation
+                if (!studentName || !studentPhone) {
+                    errorMsg.classList.remove('hidden');
+                    return;
+                }
+
+                // Show Loading
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span>Redirecting...</span> <div class="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>`;
+
+                // Direct WhatsApp Integration (No Database Save)
+                setTimeout(() => {
+                    const message = `Hi sir, my name is ${studentName}. I’m interested in buying the project: ${this.pendingProject}. My contact number is ${studentPhone}.`;
+                    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+                    // Redirect
+                    window.open(whatsappUrl, '_blank');
+                    this.closeBuyModal();
+
+                    // Reset Button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<span>Proceed to WhatsApp</span> <i data-lucide="arrow-right" class="w-5 h-5"></i>`;
+                    lucide.createIcons();
+                }, 800);
+            },
+
+            initCounters() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const el = entry.target;
+                            const target = parseInt(el.getAttribute('data-target'));
+                            const duration = 2000; // 2 seconds
+                            const start = 0;
+                            let startTime = null;
+
+                            const animate = (currentTime) => {
+                                if (!startTime) startTime = currentTime;
+                                const progress = Math.min((currentTime - startTime) / duration, 1);
+                                el.innerText = Math.floor(progress * target) + "+";
+                                if (progress < 1) requestAnimationFrame(animate);
+                            };
+                            requestAnimationFrame(animate);
+                            observer.unobserve(el);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                document.querySelectorAll('.counter-anim').forEach(el => observer.observe(el));
+            },
+
+            render() {
+                const container = document.getElementById('app-container');
+                container.innerHTML = '';
+                container.style.transition = 'opacity 0.2s ease-in-out'; // Ensure CSS transition is set
+
+                switch(this.currentPage) {
+                    case 'home':
+                        this.updateSEO('Codenbuild – Engineering Projects with DIY Kits & Mentorship', '150+ real engineering projects in robotics, IoT & electronics with complete DIY kits, documentation and mentor support.');
+                        this.renderHome(container); 
+                        break;
+                    case 'catalog':
+                        this.updateSEO('Project Library | 150+ DIY Engineering Kits | Codenbuild', 'Explore over 150 hands-on engineering projects. Find Arduino, IoT, and Robotics kits for every skill level, from beginner to advanced.');
+                        this.renderCatalog(container); 
+                        break;
+                    case 'project':
+                        this.renderProjectDetail(container, this.currentProjectId); 
+                        break;
+                    case 'about':
+                        this.updateSEO('About Codenbuild | Our Mission & Vision for Engineering Students', 'Learn about Codenbuild\'s mission to bridge the gap between theory and practice for engineering students through hands-on DIY projects and mentorship.');
+                        this.renderAbout(container); 
+                        break;
+                    case 'virtuallab':
+                        this.updateSEO('Codenbuild Virtual Lab | Online Engineering Simulations', 'Practice electronics, circuits, and robotics concepts safely in our interactive virtual lab before building real hardware projects.');
+                        this.renderVirtualLab(container); 
+                        break;
+                    case 'blog':
+                        this.updateSEO('Engineering Insights & Blogs | Codenbuild', 'Read articles on student innovation, project tips, and the journey of Codenbuild. Stay inspired and informed.');
+                        this.renderBlog(container); 
+                        break;
+                    case 'policies':
+                        this.updateSEO('Privacy & Policies | Codenbuild', 'Read the official policies for Codenbuild DIY kits, including our refund policy, liability disclaimer, and terms of educational use.');
+                        this.renderPolicies(container); 
+                        break;
+                    default:
+                        this.updateSEO('Codenbuild – Engineering Projects with DIY Kits & Mentorship', '150+ real engineering projects in robotics, IoT & electronics with complete DIY kits, documentation and mentor support.');
+                        this.renderHome(container);
+                }
+            },
+
+            // --- VIEWS ---
+
+            renderHome(container) {
+                container.innerHTML = `
+                    <div class="fade-in">
+                        <!-- 1. HERO SECTION -->
+                        <section class="text-center py-20 px-4 max-w-5xl mx-auto mb-12">
+                            <div class="flex justify-center mb-6">
+                                <img src="https://raw.githubusercontent.com/codenbuild01-droid/code-n-build/refs/heads/main/CODENBUILDLOGO.jpeg" alt="Codenbuild Logo" class="h-24 w-auto object-contain fade-in drop-shadow-sm mix-blend-multiply">
+                            </div>
+                            <span class="inline-block py-1.5 px-4 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-6 border border-blue-100 uppercase tracking-widest shadow-sm">🚀 Learn. Code. Build.</span>
+                            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">Codenbuild – Practical Learning Platform for <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Engineering & Innovation</span></h1>
+                            <p class="text-lg text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">We help students master coding, electronics, and robotics through real-world projects and expert mentorship.</p>
+                            <div class="flex flex-wrap gap-4 justify-center">
+                                <button onclick="window.router.navigate('catalog')" class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-blue-500/30 hover:-translate-y-1 transition-transform flex items-center gap-2"><i data-lucide="search" class="w-5 h-5"></i> Explore Projects</button>
+                                <button onclick="window.router.openBuyModal('Codenbuild Project Kit')" class="bg-slate-900 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-slate-800 transition-colors flex items-center gap-2">Buy Now</button>
+                                <button onclick="document.querySelector('footer').scrollIntoView({behavior: 'smooth'})" class="bg-white border border-slate-200 text-slate-700 px-8 py-4 rounded-full font-bold hover:bg-slate-50 transition-colors">Contact Us</button>
+                            </div>
+                            <!-- ANIMATED COUNTERS -->
+                            <div class="mt-12 flex justify-center gap-4 md:gap-12 text-center">
+                                <div><span class="block text-2xl md:text-3xl font-bold text-slate-900 counter-anim" data-target="200">0+</span><span class="text-xs md:text-sm text-slate-500 font-medium">Students</span></div>
+                                <div class="w-px bg-slate-200"></div>
+                                <div><span class="block text-2xl md:text-3xl font-bold text-slate-900 counter-anim" data-target="150">0+</span><span class="text-xs md:text-sm text-slate-500 font-medium">Projects</span></div>
+                                <div class="w-px bg-slate-200"></div>
+                                <div><span class="block text-2xl md:text-3xl font-bold text-slate-900 counter-anim" data-target="25">0+</span><span class="text-xs md:text-sm text-slate-500 font-medium">Completed</span></div>
+                            </div>
+                        </section>
+
+                        <!-- ACHIEVEMENTS SECTION -->
+                        <section class="max-w-4xl mx-auto px-4 mb-24 fade-in">
+                            <div class="text-center mb-10">
+                                <h2 class="text-3xl font-bold text-slate-900 mb-2">Award-Winning Student Innovation</h2>
+                                <p class="text-slate-500">Recognized for our commitment to practical learning.</p>
+                            </div>
+                            <div class="bg-white rounded-2xl border border-amber-200/80 p-8 shadow-lg hover-glow-gold relative overflow-hidden group">
+                                <div class="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+                                    <div class="shrink-0">
+                                        <div class="w-24 h-24 bg-gradient-to-br from-amber-400 to-yellow-500 text-white rounded-full flex items-center justify-center shadow-lg border-4 border-white">
+                                            <i data-lucide="award" class="w-12 h-12"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-2">🥇 1st Prize – Startup Spark Competition</h3>
+                                        <p class="text-sm font-semibold text-slate-600 mb-4">Organized by COSA at Government Polytechnic College, Yavatmal</p>
+                                        <p class="text-slate-500 leading-relaxed">
+                                            “Codenbuild was recognized for innovation in practical engineering education, mentorship, and real-world project learning.”
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 2. AI APP PROMO -->
+                        <div class="max-w-6xl mx-auto px-4 mb-24">
+                            <div class="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
+                                <div class="absolute right-0 top-0 p-8 opacity-10"><i data-lucide="smartphone" class="w-64 h-64"></i></div>
+                                <div class="relative z-10 md:w-2/3">
+                                    <span class="bg-yellow-400 text-indigo-900 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 inline-block">New Launch</span>
+                                    <h3 class="text-3xl font-bold mb-4">🔥 AI Tools Hub App – Live on Play Store</h3>
+                                    <p class="text-indigo-100 text-lg mb-8">Upgrade your projects, skills, and career with one smart app. Access project ideas, AI tools, internships, hackathons, and tech news instantly.</p>
+                                    <a href="https://play.google.com/store/apps/details?id=thejcompany.netlify.app" target="_blank" class="inline-flex items-center gap-2 bg-white text-indigo-600 px-6 py-3 rounded-xl font-bold hover:bg-yellow-400 hover:text-indigo-900 transition-all shadow-lg"><i data-lucide="download" class="w-5 h-5"></i> Download Now</a>
+                                    <p class="mt-4 text-xs text-indigo-200 italic">Made by Jai Jadhav (JJ.28)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VIRTUAL LAB SECTION -->
+                        <section class="mb-24 max-w-6xl mx-auto px-4">
+                            <div class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-3xl p-8 md:p-12 border border-slate-200/80 shadow-lg relative overflow-hidden">
+                                <div class="absolute top-0 right-0 -m-12 text-blue-100 opacity-60"><i data-lucide="flask-conical" class="w-64 h-64"></i></div>
+                                <div class="grid md:grid-cols-2 gap-8 items-center relative z-10">
+                                    <div>
+                                        <span class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-bold mb-4 border border-blue-200">
+                                            <i data-lucide="sparkles" class="w-4 h-4"></i> Now Live
+                                        </span>
+                                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Codenbuild Virtual Lab</h2>
+                                        <p class="text-slate-600 text-lg mb-8 leading-relaxed">Practice electronics, circuits, and robotics concepts in an interactive virtual environment before building real hardware projects.</p>
+                                        <a href="${VIRTUAL_LAB_LINK}" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-blue-500/30 hover:-translate-y-1 transition-transform">
+                                            <i data-lucide="play-circle" class="w-5 h-5"></i> Launch Virtual Lab
+                                        </a>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4 text-sm">
+                                        ${[
+                                            { icon: 'circuit-board', text: 'Live circuit simulation' },
+                                            { icon: 'list-checks', text: 'Step-by-step experiments' },
+                                            { icon: 'shield-check', text: 'Safe learning environment' },
+                                            { icon: 'smartphone', text: 'Mobile & desktop friendly' }
+                                        ].map(item => `
+                                            <div class="bg-white/70 p-4 rounded-xl border border-slate-200/90 shadow-sm backdrop-blur-sm hover-lift flex items-center gap-3">
+                                                <div class="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center shrink-0"><i data-lucide="${item.icon}" class="w-4 h-4"></i></div>
+                                                <span class="font-medium text-slate-700">${item.text}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <!-- 4. VISUAL FLOW (Swipeable on Mobile) -->
+                        <section class="mb-24 max-w-7xl mx-auto">
+                            <div class="text-center mb-12 px-4">
+                                <h2 class="text-3xl font-bold text-slate-900 mb-4">How Codenbuild Works</h2>
+                                <p class="text-slate-500">Your journey from beginner to innovator.</p>
+                            </div>
+                            <div class="relative bg-slate-50 py-8 rounded-3xl overflow-hidden">
+                                <!-- Desktop Line -->
+                                <div class="hidden lg:block absolute top-1/2 left-4 right-4 h-0.5 border-t-2 border-dashed border-slate-300 -z-0 -translate-y-8"></div>
+                                
+                                <!-- Scroll Container -->
+                                <div class="flex overflow-x-auto snap-x-mandatory gap-4 px-6 pb-6 lg:grid lg:grid-cols-7 lg:gap-2 lg:overflow-visible hide-scrollbar">
+                                    ${[
+                                        { title: "Choose Project", desc: "Select from 150+ options.", bgClass: "bg-blue-100", textClass: "text-blue-600", borderClass: "border-blue-200", icon: "mouse-pointer-2" },
+                                        { title: "Get DIY Kit", desc: "Hardware delivered to you.", bgClass: "bg-emerald-100", textClass: "text-emerald-600", borderClass: "border-emerald-200", icon: "package" },
+                                        { title: "Guide & Code", desc: "Access PDF & Source Code.", bgClass: "bg-amber-100", textClass: "text-amber-600", borderClass: "border-amber-200", icon: "file-code" },
+                                        { title: "Virtual Lab", desc: "Practice safely online.", bgClass: "bg-rose-100", textClass: "text-rose-600", borderClass: "border-rose-200", icon: "monitor-play" },
+                                        { title: "Build Project", desc: "Hands-on assembly.", bgClass: "bg-violet-100", textClass: "text-violet-600", borderClass: "border-violet-200", icon: "wrench" },
+                                        { title: "Mentorship", desc: "1-on-1 expert support.", bgClass: "bg-indigo-100", textClass: "text-indigo-600", borderClass: "border-indigo-200", icon: "users" },
+                                        { title: "Success", desc: "Skills & confidence gained.", bgClass: "bg-yellow-100", textClass: "text-yellow-600", borderClass: "border-yellow-200", icon: "award" }
+                                    ].map((step, i, arr) => `
+                                        <div class="min-w-[200px] snap-center relative z-10 flex flex-col items-center text-center group bg-white p-4 rounded-2xl shadow-sm border border-slate-200 hover-lift">
+                                            <div class="w-16 h-16 ${step.bgClass} ${step.textClass} rounded-2xl flex items-center justify-center font-bold text-lg shadow-md shrink-0 border-2 ${step.borderClass} group-hover:scale-110 transition-transform duration-300 mb-3">
+                                                <i data-lucide="${step.icon}" class="w-8 h-8"></i>
+                                            </div>
+                                            <h4 class="font-bold text-slate-800 text-lg leading-tight mb-1">${step.title}</h4>
+                                            <p class="text-xs text-slate-500">${step.desc}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <!-- Swipe Indicator -->
+                                <div class="lg:hidden text-center text-xs text-slate-400 mt-2 font-medium flex items-center justify-center gap-1 animate-pulse">
+                                    Swipe to explore <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 5. WORKSHOPS & MENTORSHIP -->
+                        <section class="mb-24 px-4 max-w-7xl mx-auto">
+                            <div class="text-center mb-12">
+                                <h2 class="text-3xl font-bold text-slate-900 mb-4">Guidance & Mentorship</h2>
+                                <p class="text-slate-500">Expert support at every step of your journey.</p>
+                            </div>
+                            
+                            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                                <!-- Image Column -->
+                                <div class="relative rounded-3xl overflow-hidden shadow-2xl hover-lift group h-full min-h-[400px]">
+                                    <img src="https://raw.githubusercontent.com/codenbuild01-droid/code-n-build/refs/heads/main/WhatsApp%20Image%202026-01-14%20at%2010.25.58%20PM.jpeg" 
+                                         alt="Codenbuild Mentorship" 
+                                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                                        <p class="font-bold text-lg">Hands-on Learning</p>
+                                        <p class="text-sm text-slate-200">Real projects, real skills.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Content Column -->
+                                <div class="flex flex-col gap-6">
+                                    <!-- Expert Mentorship -->
+                                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover-lift flex flex-col md:flex-row gap-4">
+                                        <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 shrink-0">
+                                            <i data-lucide="user-check" class="w-7 h-7"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-bold text-slate-900 mb-2">Expert Mentorship</h3>
+                                            <p class="text-slate-600 text-sm mb-3">Get professional guidance from experienced mentors to clear doubts.</p>
+                                            <ul class="text-sm text-slate-500 space-y-1">
+                                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> One-to-One Guidance</li>
+                                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> Debugging Support</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- Hands-on Workshops -->
+                                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover-lift flex flex-col md:flex-row gap-4">
+                                        <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
+                                            <i data-lucide="presentation" class="w-7 h-7"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-bold text-slate-900 mb-2">Hands-on Workshops</h3>
+                                            <p class="text-slate-600 text-sm mb-3">Build real working models instead of just learning theory.</p>
+                                            <ul class="text-sm text-slate-500 space-y-1">
+                                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-500"></i> Electronics & Arduino</li>
+                                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-500"></i> Robotics & IoT</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- Project Stuck Support -->
+                                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-2xl border border-slate-700 shadow-lg hover-lift text-white relative overflow-hidden">
+                                        <div class="absolute top-0 right-0 p-4 opacity-10"><i data-lucide="life-buoy" class="w-20 h-20"></i></div>
+                                        <div class="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                                            <div class="w-14 h-14 bg-red-500/20 rounded-xl flex items-center justify-center text-red-400 border border-red-500/30 shrink-0">
+                                                <i data-lucide="wrench" class="w-7 h-7"></i>
+                                            </div>
+                                            <div class="flex-grow text-center md:text-left">
+                                                <h3 class="text-xl font-bold mb-1">Is Your Project Stuck?</h3>
+                                                <p class="text-slate-300 text-sm mb-4">We help fix wiring issues & code errors.</p>
+                                                <button onclick="window.router.openBuyModal('Project Troubleshooting Support')" class="inline-block w-full md:w-auto px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg transition-colors shadow-lg text-sm">
+                                                    Book Appointment
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 9. TESTIMONIALS (Swipeable) -->
+                        <section class="mb-24 max-w-6xl mx-auto px-4">
+                            <h2 class="text-3xl font-bold text-center mb-12 text-slate-900">Student Reviews</h2>
+                            <div class="flex overflow-x-auto snap-x-mandatory gap-6 pb-6 md:grid md:grid-cols-2 hide-scrollbar">
+                                <div class="min-w-[300px] snap-center bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover-lift"><div class="flex text-yellow-400 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div><p class="text-slate-600 mb-6 italic">"The quality of the kits is amazing. The mentorship support helped me clear my concepts and build my first robot with confidence."</p><h4 class="font-bold text-sm text-slate-900">1st Year Computer Engineering Student</h4></div>
+                                <div class="min-w-[300px] snap-center bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover-lift"><div class="flex text-yellow-400 mb-4"><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i></div><p class="text-slate-600 mb-6 italic">"Practical learning is exactly what I needed. Codenbuild guides are easy to follow and the projects are very relevant for my curriculum."</p><h4 class="font-bold text-sm text-slate-900">Electrical Engineering Student</h4></div>
+                            </div>
+                        </section>
+
+                        <!-- 10. BLOGS PREVIEW -->
+                        <section class="mb-24 px-4 max-w-6xl mx-auto">
+                            <div class="flex justify-between items-end mb-8"><h2 class="text-3xl font-bold text-slate-900">Blogs & Insights</h2><button onclick="window.router.navigate('blog')" class="text-blue-600 font-bold hover:underline">View All</button></div>
+                            <div class="flex overflow-x-auto snap-x-mandatory gap-6 pb-6 md:grid md:grid-cols-3 hide-scrollbar">
+                                ${blogs.map(b => `<div class="min-w-[280px] snap-center bg-white p-6 rounded-2xl border border-slate-200 hover-lift"><span class="text-xs font-bold text-blue-600 uppercase mb-2 block">${b.category}</span><h3 class="font-bold text-lg mb-2 leading-snug">${b.title}</h3><p class="text-sm text-slate-500 mb-4 line-clamp-2">${b.summary}</p><button onclick="window.router.navigate('blog')" class="text-sm font-bold text-slate-900 hover:text-blue-600">Read More</button></div>`).join('')}
+                            </div>
+                        </section>
+
+                        <!-- 11. CONTACT -->
+                        <section class="text-center mb-16 px-4">
+                            <h2 class="text-2xl font-bold mb-8">Get In Touch</h2>
+                            <div class="flex flex-wrap justify-center gap-6">
+                                <a href="https://www.instagram.com/codenbuild_support" target="_blank" class="flex items-center gap-2 bg-white px-6 py-3 rounded-full border border-slate-200 hover:border-pink-200 hover:text-pink-600 transition-colors font-bold shadow-sm"><i data-lucide="instagram" class="w-5 h-5"></i> Instagram</a>
+                                <a href="mailto:codenbuild01@gmail.com" class="flex items-center gap-2 bg-white px-6 py-3 rounded-full border border-slate-200 hover:border-blue-200 hover:text-blue-600 transition-colors font-bold shadow-sm"><i data-lucide="mail" class="w-5 h-5"></i> Email Us</a>
+                                <a href="${WHATSAPP_LINK}" target="_blank" class="flex items-center gap-2 bg-white px-6 py-3 rounded-full border border-slate-200 hover:border-green-200 hover:text-green-600 transition-colors font-bold shadow-sm"><i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp</a>
+                            </div>
+                        </section>
+                    </div>
+                `;
+            },
+
+            renderCatalog(container) {
+                const filtered = projects.filter(p => {
+                    const matchesSearch = p.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+                    const matchesLevel = this.projectFilter === 'all' || p.levelId === this.projectFilter;
+                    return matchesSearch && matchesLevel;
+                });
+
+                container.innerHTML = `
+                    <div class="fade-in px-4 max-w-7xl mx-auto">
+                        <div class="text-center mb-10">
+                            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Project Library</h2>
+                            <p class="text-slate-500">150+ Real-world projects with complete DIY Kits</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-lg mb-8 sticky top-24 z-30">
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <div class="relative flex-grow">
+                                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4"></i>
+                                    <input type="text" id="searchInput" placeholder="Search projects..." value="${this.searchQuery}" class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                                </div>
+                                <select id="levelFilter" class="w-full md:w-auto pl-3 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none cursor-pointer">
+                                    <option value="all" ${this.projectFilter === 'all' ? 'selected' : ''}>All Categories</option>
+                                    <option value="starter" ${this.projectFilter === 'starter' ? 'selected' : ''}>Starter (₹999)</option>
+                                    <option value="core" ${this.projectFilter === 'core' ? 'selected' : ''}>Core Learning (₹1099+)</option>
+                                    <option value="applied" ${this.projectFilter === 'applied' ? 'selected' : ''}>Applied Automation (₹1499)</option>
+                                    <option value="advanced" ${this.projectFilter === 'advanced' ? 'selected' : ''}>Advanced Control (₹1999)</option>
+                                    <option value="robotics" ${this.projectFilter === 'robotics' ? 'selected' : ''}>Robotics & IoT (₹2399+)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+                            ${filtered.length > 0 ? filtered.map(p => `
+                                <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover-lift flex flex-col h-full relative overflow-hidden group cursor-pointer" onclick="window.router.navigate('project', ${p.id})">
+                                    <div class="absolute top-0 left-0 w-1 h-full ${p.borderColor}"></div>
+                                    <div class="pl-3 flex flex-col h-full">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <span class="${p.badge} px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">${p.level.split(' ')[0]}</span>
+                                            <span class="text-xs text-slate-400 font-mono">#${String(p.id).padStart(3,'0')}</span>
+                                        </div>
+                                        <h3 class="font-bold text-slate-800 text-lg mb-2 leading-snug group-hover:text-blue-600 transition-colors">${p.name}</h3>
+                                        <p class="text-xs text-slate-500 mb-4 line-clamp-2">${p.overview.replace(/\*+/g, '')}</p>
+                                        <div class="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between gap-3">
+                                            <div><span class="block text-[10px] text-slate-400 font-bold uppercase">Price</span><span class="text-xl font-bold text-slate-900">₹${p.price.toLocaleString()}</span></div>
+                                            <div class="flex gap-2">
+                                                <button onclick="event.stopPropagation(); window.router.openBuyModal('${p.name.replace(/'/g, "\\'")}')" class="bg-slate-900 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors shadow-md flex items-center gap-1 z-10 relative">Buy Kit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('') : `<div class="col-span-full text-center py-20 bg-white rounded-2xl border border-dashed border-slate-300"><p class="text-slate-500">No projects found.</p></div>`}
+                        </div>
+                    </div>
+                `;
+            },
+
+            renderProjectDetail(container, projectId) {
+                const project = projects.find(p => p.id === projectId);
+                if (!project) {
+                    this.updateSEO('Project Not Found | Codenbuild', 'This project could not be found.');
+                    container.innerHTML = `<div class="fade-in text-center py-20"><h2 class="text-2xl font-bold">Project Not Found</h2><button onclick="window.router.navigate('catalog')" class="text-blue-600 hover:underline mt-4 inline-block">Back to Library</button></div>`;
+                    return;
+                };
+                this.updateSEO(`${project.name} | Codenbuild DIY Project Kit`, `Build the ${project.name} with our complete DIY kit. Includes all components, code, and mentorship. Order yours today!`);
+                container.innerHTML = `
+                    <div class="fade-in max-w-4xl mx-auto px-4">
+                        <button onclick="window.router.navigate('catalog')" class="mb-6 flex items-center gap-2 text-slate-500 hover:text-blue-600 text-sm font-medium"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Library</button>
+                        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg mb-8 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-2 ${project.borderColor}"></div>
+                            <div class="flex flex-col md:flex-row justify-between gap-8">
+                                <div class="flex-grow">
+                                    <div class="flex items-center gap-3 mb-4"><span class="${project.badge} px-3 py-1 rounded-full text-xs font-bold uppercase">${project.level}</span></div>
+                                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">${project.name}</h1>
+                                    <p class="text-lg text-slate-600 leading-relaxed mb-4">${project.overview.replace(/\*+/g, '')}</p>
+                                    <div class="text-sm text-slate-500"><strong>Application:</strong> ${project.apps}</div>
+                                </div>
+                                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 min-w-[260px] text-center flex flex-col justify-center">
+                                    <p class="text-xs text-slate-500 font-bold uppercase mb-1">Standard Kit Price</p>
+                                    <div class="text-4xl font-bold text-slate-900 mb-4">₹${project.price.toLocaleString()}</div>
+                                    <button onclick="window.router.openBuyModal('${project.name.replace(/'/g, "\\'")}')" class="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i> Buy on WhatsApp</button>
+                                    <p class="text-[10px] text-slate-400 mt-3">Includes Hardware, Code, Diagram & PDF</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-white p-6 rounded-2xl border border-slate-200"><h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2"><i data-lucide="settings-2" class="text-blue-600 w-5 h-5"></i> How It Works</h3><ul class="space-y-3 text-sm text-slate-600">${project.works.map((w, i) => `<li class="flex gap-3"><span class="font-bold text-blue-500">${i+1}.</span> ${w}</li>`).join('')}</ul></div>
+                            <div class="bg-white p-6 rounded-2xl border border-slate-200"><h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2"><i data-lucide="cpu" class="text-blue-600 w-5 h-5"></i> Components</h3><div class="flex flex-wrap gap-2">${project.components.map(c => `<span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded border border-slate-200">${c}</span>`).join('')}</div></div>
+                        </div>
+                        <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100"><h3 class="font-bold text-blue-900 mb-4 flex items-center gap-2"><i data-lucide="graduation-cap" class="text-blue-600 w-5 h-5"></i> Learning Outcomes</h3><ul class="space-y-2 text-sm text-blue-800">${project.outcomes.map(o => `<li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-500"></i> ${o}</li>`).join('')}</ul></div>
+                    </div>
+                `;
+            },
+
+            renderBlog(container) {
+                container.innerHTML = `
+                    <div class="fade-in px-4 max-w-5xl mx-auto">
+                        <button onclick="window.router.navigate('home')" class="mb-6 flex items-center gap-2 text-slate-500 hover:text-blue-600 text-sm font-medium"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home</button>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-8">Blogs & Insights</h2>
+                        <div class="grid gap-6">
+                            ${blogs.map(b => `
+                                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover-lift">
+                                    <div class="flex items-center gap-3 mb-2 text-xs font-bold uppercase tracking-wide"><span class="text-blue-600 bg-blue-50 px-2 py-1 rounded">${b.category}</span><i data-lucide="book-open" class="w-3 h-3 text-slate-400"></i></div>
+                                    <h3 class="text-2xl font-bold text-slate-900 mb-3">${b.title}</h3>
+                                    <p class="text-slate-600 mb-6">${b.summary}</p>
+                                    <a href="${b.link}" target="_blank" class="text-blue-600 font-bold text-sm hover:underline flex items-center gap-1">Read Full Article <i data-lucide="external-link" class="w-3 h-3"></i></a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            },
+
+            renderVirtualLab(container) {
+                container.innerHTML = `
+                    <div class="fade-in max-w-4xl mx-auto px-4 py-12 text-center">
+                        <div class="inline-block p-4 bg-blue-100 text-blue-600 rounded-2xl mb-6">
+                           <i data-lucide="flask-conical" class="w-12 h-12"></i>
+                        </div>
+                        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Codenbuild Virtual Lab</h1>
+                        <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                            Practice engineering online. Learn electronics, circuits, robotics concepts, and simulations in an interactive virtual environment before building real hardware projects.
+                        </p>
+                        
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left max-w-3xl mx-auto mb-12">
+                             ${[
+                                { icon: 'circuit-board', title: 'Live Simulation', text: 'Test circuits in real-time.' },
+                                { icon: 'list-checks', title: 'Guided Labs', text: 'Follow step-by-step experiments.' },
+                                { icon: 'shield-check', title: 'Safe Learning', text: 'No risk of hardware damage.' },
+                                { icon: 'smartphone', title: 'Cross-Platform', text: 'Works on mobile & desktop.' }
+                            ].map(item => `
+                                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover-lift flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 mt-1"><i data-lucide="${item.icon}" class="w-4 h-4"></i></div>
+                                    <div>
+                                        <h3 class="font-bold text-slate-800">${item.title}</h3>
+                                        <p class="text-xs text-slate-500">${item.text}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <a href="${VIRTUAL_LAB_LINK}" target="_blank" class="inline-flex items-center gap-3 bg-blue-600 text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg shadow-blue-500/30 hover:-translate-y-1 transition-transform">
+                            <i data-lucide="play-circle" class="w-6 h-6"></i> Launch Virtual Lab
+                        </a>
+                    </div>
+                `;
+            },
+
+            renderAbout(container) {
+                container.innerHTML = `
+                    <div class="fade-in max-w-3xl mx-auto py-12 px-4">
+                        <button onclick="window.router.navigate('home')" class="mb-6 flex items-center gap-2 text-slate-500 hover:text-blue-600 text-sm font-medium"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home</button>
+                        <h1 class="text-4xl font-bold text-slate-900 mb-6">About Codenbuild</h1>
+                        <div class="prose prose-slate lg:prose-lg text-slate-700">
+                            <p class="lead text-xl text-slate-600 mb-6">Codenbuild was founded by students, for students. We recognized a massive gap in engineering education: <strong>Too much theory, too little practice.</strong></p>
+                            <p class="mb-4">Our mission is to empower every student with the tools, kits, and mentorship needed to build real-world innovations. We focus on:</p>
+                            <ul class="list-disc pl-6 mb-6 space-y-2"><li>Coding & Embedded Systems</li><li>Robotics & Automation</li><li>Internet of Things (IoT)</li><li>Innovation Mindset</li></ul>
+                            <p class="mb-6">We are not just a kit provider; we are a community dedicated to turning beginners into creators. Our mentorship-driven approach ensures that no student feels stuck or lost while learning.</p>
+                            <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 mt-8"><h3 class="font-bold text-blue-900 mb-2">Our Vision</h3><p class="text-blue-800 text-sm">To be India's leading practical learning ecosystem where every engineering student builds at least one innovation before graduating.</p></div>
+                        </div>
+                    </div>
+                `;
+            },
+
+            renderPolicies(container) {
+                container.innerHTML = `
+                    <div class="fade-in max-w-4xl mx-auto px-4 py-12">
+                        <button onclick="window.router.navigate('home')" class="mb-8 flex items-center gap-2 text-slate-500 hover:text-blue-600 text-sm font-medium">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+                        </button>
+                        
+                        <div class="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-lg">
+                            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-8 border-b border-slate-100 pb-6">Privacy & Policies</h1>
+                            
+                            <div class="space-y-8">
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                        <i data-lucide="package-open" class="text-blue-600 w-5 h-5"></i> DIY Kits Only
+                                    </h3>
+                                    <p class="text-slate-600 leading-relaxed ml-7">
+                                        We provide DIY kits, not ready-made projects. Students build projects themselves, keeping them compliant with college rules.
+                                    </p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                        <i data-lucide="graduation-cap" class="text-blue-600 w-5 h-5"></i> Educational Use
+                                    </h3>
+                                    <p class="text-slate-600 leading-relaxed ml-7">
+                                        Kits are strictly for personal learning and experimentation. Commercial resale or presenting kits as pre-built work is prohibited.
+                                    </p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                        <i data-lucide="alert-triangle" class="text-blue-600 w-5 h-5"></i> Liability Disclaimer
+                                    </h3>
+                                    <p class="text-slate-600 leading-relaxed ml-7">
+                                        Codenbuild is not responsible for misuse, incorrect assembly, or damages. Users must follow instructions carefully.
+                                    </p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                        <i data-lucide="refresh-ccw" class="text-blue-600 w-5 h-5"></i> Refund Policy
+                                    </h3>
+                                    <p class="text-slate-600 leading-relaxed ml-7">
+                                        Refunds are applicable only for damaged or missing kit parts and must be reported within 7 days of delivery.
+                                    </p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                        <i data-lucide="copyright" class="text-blue-600 w-5 h-5"></i> Intellectual Property Rights
+                                    </h3>
+                                    <p class="text-slate-600 leading-relaxed ml-7">
+                                        All content, images, documents, and designs belong to Codenbuild. Unauthorized copying or distribution is prohibited.
+                                    </p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                        <i data-lucide="scale" class="text-blue-600 w-5 h-5"></i> Legal Compliance
+                                    </h3>
+                                    <p class="text-slate-600 leading-relaxed ml-7">
+                                        By using this website and purchasing kits, users agree to follow all applicable laws and college academic policies.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-12 pt-8 border-t border-slate-100 text-center">
+                                <button onclick="window.router.navigate('home')" class="bg-slate-900 text-white px-8 py-3 rounded-full font-bold hover:bg-slate-800 transition-colors shadow-lg">
+                                    Close & Return to Home
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            },
+
+            attachEvents() {
+                // Attach listeners to dynamically generated content
+                const searchInput = document.getElementById('searchInput');
+                if (searchInput) {
+                    searchInput.addEventListener('input', (e) => {
+                        this.searchQuery = e.target.value;
+                        this.render(); // Re-render the current page (catalog)
+                        // Refocus after render
+                        const el = document.getElementById('searchInput');
+                        el.focus();
+                        el.setSelectionRange(el.value.length, el.value.length);
+                    });
+                }
+                const levelFilter = document.getElementById('levelFilter');
+                if (levelFilter) {
+                    levelFilter.addEventListener('change', (e) => {
+                        this.projectFilter = e.target.value;
+                        this.render(); // Re-render the current page (catalog)
+                    });
+                }
+
+                // Add click listeners to project cards
+                const projectCards = document.querySelectorAll('.group[onclick]');
+                projectCards.forEach(card => {
+                    const onclickAttr = card.getAttribute('onclick');
+                    if (onclickAttr && onclickAttr.includes('navigate')) {
+                        const id = onclickAttr.match(/\d+/)[0];
+                        card.addEventListener('click', () => this.navigate('project', parseInt(id)));
+                    }
+                });
+            }
+        };
+
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+        
+        // FAB Toggle
+        function toggleFab() {
+            const menu = document.getElementById('fab-menu');
+            const icon = document.getElementById('fab-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.remove('fab-menu-enter');
+                menu.classList.add('fab-menu-enter-active');
+                icon.style.transform = 'rotate(45deg)';
+            } else {
+                menu.classList.remove('fab-menu-enter-active');
+                menu.classList.add('fab-menu-enter');
+                setTimeout(() => {
+                    if (menu.classList.contains('fab-menu-enter')) {
+                       menu.classList.add('hidden');
+                    }
+                }, 200);
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // --- Expose to Global Scope (Crucial for onclick attributes) ---
+        window.router = router;
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.toggleFab = toggleFab;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            router.navigate('home');
+        });
+    </script>
 </body>
 </html>
-
-
