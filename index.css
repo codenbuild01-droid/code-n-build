@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@theme {
+  --color-brand-primary: #172B36; /* Oceanic Noir */
+  --color-brand-secondary: #114C5A; /* Nocturnal */
+  --color-brand-accent: #FF9932; /* Deep saffron */
+  --color-brand-gold: #FFC801; /* Forsytha */
+  --color-brand-bg: #F1F6F4; /* Arctic Powder */
+  --color-brand-mint: #D9E8E2; /* Mystic Mint */
+  
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  
+  --radius-card: 24px;
+  --radius-button: 12px;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--color-brand-bg)] text-[var(--color-brand-primary)] antialiased selection:bg-[var(--color-brand-accent)] selection:text-white;
+  }
+}
+
+@layer components {
+  .glass-nav {
+    @apply bg-[var(--color-brand-bg)]/80 backdrop-blur-xl border-b border-[var(--color-brand-primary)]/5;
+  }
+
+  .btn-gold {
+    @apply bg-[var(--color-brand-gold)] text-white font-semibold px-6 py-3 rounded-[var(--radius-button)] shadow-lg shadow-[var(--color-brand-gold)]/20 hover:scale-[1.02] active:scale-[0.98] transition-all;
+  }
+
+  .btn-teal {
+    @apply bg-[var(--color-brand-secondary)] text-white font-semibold px-6 py-3 rounded-[var(--radius-button)] hover:bg-[var(--color-brand-accent)] transition-all;
+  }
+
+  .premium-card {
+    @apply bg-white rounded-[var(--radius-card)] border border-[var(--color-brand-primary)]/5 shadow-sm hover:shadow-xl hover:shadow-[var(--color-brand-primary)]/5 transition-all duration-300;
+  }
+  
+  .type-h1 { @apply text-4xl md:text-6xl font-bold tracking-tight text-[var(--color-brand-primary)]; }
+  .type-h2 { @apply text-3xl md:text-4xl font-semibold tracking-tight text-[var(--color-brand-primary)]; }
+  .type-body { @apply text-base text-[var(--color-brand-primary)]/70 leading-relaxed; }
+}
+
+.fade-in {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
